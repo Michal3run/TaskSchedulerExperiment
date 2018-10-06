@@ -4,8 +4,10 @@ namespace TaskSchedulerCommon.Models
 {
     public class ServerParameters
     {
-        //Time for which server will work
-        public int TotalWorkingTime { get; set; }
+        /// <summary>
+        /// Time for which server will work
+        /// </summary>
+        public int TotalWorkingTime { get; set; } //TO REFACTOR?
         
         public ITaskScheduler TaskScheduler { get; set; }
     }

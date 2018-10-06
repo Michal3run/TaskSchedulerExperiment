@@ -6,7 +6,7 @@ using TaskSchedulerCore.Schdulers;
 
 namespace TaskSchedulerExperiment
 {
-    class Program
+    class Tester
     {
         static void Main(string[] args)
         {

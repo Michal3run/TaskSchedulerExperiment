@@ -15,7 +15,7 @@ namespace TaskSchedulerCore.Schdulers
         protected List<SchedulerTask> ReadyTasks { get; } = new List<SchedulerTask>();
 
         private List<SchedulerTask> _doneTasks { get; } = new List<SchedulerTask>();
-        
+
         public abstract void Process(int currentTime);
 
         public void AddNewTasks(IEnumerable<TaskModel> tasks)
@@ -37,7 +37,7 @@ namespace TaskSchedulerCore.Schdulers
         }
 
         protected void UpdateLists(SchedulerTask task)
-        {            
+        {
             _doneTasks.Add(task);
             ReadyTasks.Remove(task);
         }

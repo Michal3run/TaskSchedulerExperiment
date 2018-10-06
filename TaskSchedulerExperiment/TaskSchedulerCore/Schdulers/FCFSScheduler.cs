@@ -28,7 +28,7 @@ namespace TaskSchedulerCore.Schdulers
             {
                 UpdateLists(_currentTask);
                 _currentTask = null;
-            }            
+            }
         }
     }
 }

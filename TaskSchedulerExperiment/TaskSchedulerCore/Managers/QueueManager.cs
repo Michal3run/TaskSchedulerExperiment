@@ -16,7 +16,7 @@ namespace TaskSchedulerCore.Managers
         public IEnumerable<TaskModel> GetTasksToProcess(int currentTime)
         {
             var result = new List<TaskModel>();
-                     
+
             while (_tasks.Any() && IsTaskReady(_tasks.Peek(), currentTime))
             {
                 result.Add(_tasks.Dequeue());
