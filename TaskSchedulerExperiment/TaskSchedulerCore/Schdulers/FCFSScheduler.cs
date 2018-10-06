@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using TaskSchedulerCommon.Models;
+﻿using TaskSchedulerCommon.Models;
 
 namespace TaskSchedulerCore.Schdulers
 {
@@ -11,19 +10,21 @@ namespace TaskSchedulerCore.Schdulers
         {
             if (_currentTask == null)
             {
-                if (ReadyTasks.Any())
-                {
-                    _currentTask = ReadyTasks.First();
-                }
-                else
+                if (!TryGetReadyTask(out _currentTask))
                 {
                     //no tasks to process..
                     return;
                 }
             }
 
+            ProcessCurrentTask(currentTime);
+        }
+
+        private void ProcessCurrentTask(int currentTime)
+        {
             _currentTask.WaitingTime = currentTime - _currentTask.CreateTime; //simple case, without expropriation
             _currentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
+
             if (_currentTask.IsDone)
             {
                 UpdateLists(_currentTask);

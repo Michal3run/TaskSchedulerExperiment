@@ -8,23 +8,23 @@ namespace TaskSchedulerCore.Schdulers
 {
     public abstract class SchedulerBase : ITaskScheduler
     {
-        protected SchedulerBase()
-        {
-        }
-
-        protected List<SchedulerTask> ReadyTasks { get; } = new List<SchedulerTask>();
+        private List<SchedulerTask> _readyTasks { get; } = new List<SchedulerTask>();
 
         private List<SchedulerTask> _doneTasks { get; } = new List<SchedulerTask>();
+
+        protected SchedulerBase()
+        {
+        }        
 
         public abstract void Process(int currentTime);
 
         public void AddNewTasks(IEnumerable<TaskModel> tasks)
         {
             var schedulerTasks = tasks.Select(GetSchedulerTask).ToList();
-            ReadyTasks.AddRange(schedulerTasks);
+            _readyTasks.AddRange(schedulerTasks);
         }
 
-        public bool AllCurrentTasksAreDone => ReadyTasks.Count == 0;
+        public bool AllCurrentTasksAreDone => _readyTasks.Count == 0;
 
         public ProcessingOutput GetProcessingOutput()
         {
@@ -36,10 +36,16 @@ namespace TaskSchedulerCore.Schdulers
             };
         }
 
+        protected bool TryGetReadyTask(out SchedulerTask task)
+        {
+            task = _readyTasks.FirstOrDefault();
+            return task != null;
+        }
+
         protected void UpdateLists(SchedulerTask task)
         {
             _doneTasks.Add(task);
-            ReadyTasks.Remove(task);
+            _readyTasks.Remove(task);
         }
 
         private SchedulerTask GetSchedulerTask(TaskModel task)
