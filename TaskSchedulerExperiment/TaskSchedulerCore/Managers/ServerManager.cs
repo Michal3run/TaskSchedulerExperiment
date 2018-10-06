@@ -8,9 +8,9 @@ namespace TaskSchedulerCore.Managers
 {
     public class ServerManager : IDisposable
     {
+        private readonly IQueueManager _queueManager;
         private readonly ITaskScheduler _taskScheduler;
-        private readonly ITimer _timer;
-        private readonly QueueManager _queueManager;
+        private readonly ITimer _timer;        
 
         public ServerManager(ServerParameters parameters)
         {
@@ -38,7 +38,7 @@ namespace TaskSchedulerCore.Managers
 
         private ITimer GetTimer(int totalWorkingTime) => new Timer(totalWorkingTime);
 
-        private QueueManager GetQueueManager()
+        private IQueueManager GetQueueManager()
         {
             var tasks = GetTasks();
             return new QueueManager(tasks);

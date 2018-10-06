@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 
 namespace TaskSchedulerCore.Managers
 {
-    public class QueueManager
+    public class QueueManager : IQueueManager
     {
         private readonly Queue<TaskModel> _tasks;
 
