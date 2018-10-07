@@ -1,30 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
+using TaskSchedulerData.Helpers;
 
 namespace TaskSchedulerCore.Schdulers
 {
     public abstract class SchedulerBase : ITaskScheduler
     {
-        private List<SchedulerTask> _readyTasks { get; } = new List<SchedulerTask>();
+        private readonly List<SchedulerTask> _doneTasks = new List<SchedulerTask>();
 
-        private List<SchedulerTask> _doneTasks { get; } = new List<SchedulerTask>();
+        protected Queue<SchedulerTask> ReadyTasks { get; } = new Queue<SchedulerTask>();
 
-        protected SchedulerBase()
-        {
-        }        
+        protected SchedulerTask CurrentTask { get; private set; }
 
         public abstract void Process(int currentTime);
 
         public void AddNewTasks(IEnumerable<TaskModel> tasks)
         {
             var schedulerTasks = tasks.Select(GetSchedulerTask).ToList();
-            _readyTasks.AddRange(schedulerTasks);
+            ReadyTasks.AddRange(schedulerTasks);
         }
 
-        public bool AllCurrentTasksAreDone => _readyTasks.Count == 0;
+        public bool AllCurrentTasksAreDone => ReadyTasks.Count == 0;
 
         public ProcessingOutput GetProcessingOutput()
         {
@@ -36,16 +34,20 @@ namespace TaskSchedulerCore.Schdulers
             };
         }
 
-        protected bool TryGetReadyTask(out SchedulerTask task)
+        protected bool TrySetCurrentTaskFromReadyTasks() => TrySetCurrentTask(ReadyTasks);
+
+        protected bool TrySetCurrentTask(Queue<SchedulerTask> source)
         {
-            task = _readyTasks.FirstOrDefault();
-            return task != null;
+            if (source.Count == 0) return false;
+
+            CurrentTask = source.Dequeue();
+            return true;
         }
 
-        protected void UpdateLists(SchedulerTask task)
+        protected void AddCurrentTaskToDone()
         {
-            _doneTasks.Add(task);
-            _readyTasks.Remove(task);
+            _doneTasks.Add(CurrentTask);
+            CurrentTask = null;
         }
 
         private SchedulerTask GetSchedulerTask(TaskModel task)

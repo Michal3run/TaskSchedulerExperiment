@@ -1,16 +1,12 @@
-﻿using TaskSchedulerCommon.Models;
-
-namespace TaskSchedulerCore.Schdulers
+﻿namespace TaskSchedulerCore.Schdulers
 {
     public class FCFSScheduler : SchedulerBase
     {
-        private SchedulerTask _currentTask;
-
         public override void Process(int currentTime)
         {
-            if (_currentTask == null)
+            if (CurrentTask == null)
             {
-                if (!TryGetReadyTask(out _currentTask))
+                if (!TrySetCurrentTaskFromReadyTasks())
                 {
                     //no tasks to process..
                     return;
@@ -22,13 +18,12 @@ namespace TaskSchedulerCore.Schdulers
 
         private void ProcessCurrentTask(int currentTime)
         {
-            _currentTask.WaitingTime = currentTime - _currentTask.CreateTime; //simple case, without expropriation
-            _currentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
+            CurrentTask.WaitingTime = CurrentTask.WaitingTime ?? currentTime - CurrentTask.CreateTime; //simple case, without expropriation
+            CurrentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
 
-            if (_currentTask.IsDone)
+            if (CurrentTask.IsDone)
             {
-                UpdateLists(_currentTask);
-                _currentTask = null;
+                AddCurrentTaskToDone();
             }
         }
     }
