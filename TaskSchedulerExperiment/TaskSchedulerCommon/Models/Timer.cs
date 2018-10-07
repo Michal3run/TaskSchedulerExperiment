@@ -4,8 +4,8 @@ namespace TaskSchedulerCommon.Models
 {
     public class Timer : ITimer
     {
-        private int _ticksCount = 0;
-        private int _totalWorkingTime;
+        private int _ticksCount;
+        private readonly int _totalWorkingTime;
 
         public Timer(int totalWorkingTime)
         {
