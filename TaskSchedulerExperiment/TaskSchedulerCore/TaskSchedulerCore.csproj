@@ -43,6 +43,7 @@
     <Compile Include="Managers\QueueManager.cs" />
     <Compile Include="Managers\ServerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schdulers\DoubleQueueScheduler.cs" />
     <Compile Include="Schdulers\FCFSScheduler.cs" />
     <Compile Include="Schdulers\SchedulerBase.cs" />
   </ItemGroup>
