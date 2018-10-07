@@ -1,5 +1,8 @@
-﻿namespace TaskSchedulerCommon.Models
+﻿using System.Diagnostics;
+
+namespace TaskSchedulerCommon.Models
 {
+    [DebuggerDisplay("CreateTime: {" + nameof(CreateTime) + ("}, Duration: {" + nameof(Duration) + "}"))]
     public class TaskModel
     {
         /// <summary>
