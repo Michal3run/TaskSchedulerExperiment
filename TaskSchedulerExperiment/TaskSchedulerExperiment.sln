@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulerTester", "TaskSchedulerExperiment\TaskSchedulerTester.csproj", "{9AB1F458-FD85-4AD0-9B5E-884AB421BC59}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulerData", "TaskSchedulerData\TaskSchedulerData.csproj", "{7CF90D0D-1539-4A9B-B5EA-D07AFBAFD77C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulerCore", "TaskSchedulerCore\TaskSchedulerCore.csproj", "{63C4E685-4EAD-46F0-8E93-DD92E8FCE2DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskSchedulerGenerator", "TaskSchedulerGenerator\TaskSchedulerGenerator.csproj", "{3B5733E4-F799-4B3A-8F8A-1DBAFFF831E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +35,15 @@ Global
 		{63C4E685-4EAD-46F0-8E93-DD92E8FCE2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63C4E685-4EAD-46F0-8E93-DD92E8FCE2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63C4E685-4EAD-46F0-8E93-DD92E8FCE2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B5733E4-F799-4B3A-8F8A-1DBAFFF831E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B5733E4-F799-4B3A-8F8A-1DBAFFF831E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B5733E4-F799-4B3A-8F8A-1DBAFFF831E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B5733E4-F799-4B3A-8F8A-1DBAFFF831E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {470484BF-2FB8-41F2-8998-DD0EDD18C9B5}
 	EndGlobalSection
 EndGlobal
