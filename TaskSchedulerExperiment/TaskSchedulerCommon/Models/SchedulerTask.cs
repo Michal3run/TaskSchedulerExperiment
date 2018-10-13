@@ -5,7 +5,7 @@ namespace TaskSchedulerCommon.Models
     [DebuggerDisplay("IsDone: {" + nameof(IsDone) + "} CreateTime: {" + nameof(CreateTime) + ("}, Duration: {" + nameof(Duration) + "}"))]
     public class SchedulerTask : TaskModel
     {
-        public bool IsDeyaled => WaitingTime > MaxWaitingTime;
+        public bool IsDelayed => WaitingTime > MaxWaitingTime;
 
         public bool IsDone => ProcessedTime >= Duration;
 

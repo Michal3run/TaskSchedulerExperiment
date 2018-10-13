@@ -22,11 +22,11 @@ namespace TaskSchedulerCore.Schdulers
             ReadyTasks.AddRange(schedulerTasks);
         }
 
-        public bool AllCurrentTasksAreDone => ReadyTasks.Count == 0;
+        public virtual bool AllCurrentTasksAreDone => ReadyTasks.Count == 0;
 
         public ProcessingOutput GetProcessingOutput()
         {
-            var delayedTasks = (decimal)_doneTasks.Count(t => t.IsDeyaled);
+            var delayedTasks = (decimal)_doneTasks.Count(t => t.IsDelayed);
 
             return new ProcessingOutput
             {
@@ -42,6 +42,12 @@ namespace TaskSchedulerCore.Schdulers
 
             CurrentTask = source.Dequeue();
             return true;
+        }
+
+        protected bool TrySetCurrentTask(List<SchedulerTask> source)
+        {
+            CurrentTask = source.FirstOrDefault();
+            return CurrentTask != null;
         }
 
         protected void AddCurrentTaskToDone()

@@ -10,7 +10,7 @@ namespace TaskSchedulerCore.Managers
     {
         private readonly IQueueManager _queueManager;
         private readonly ITaskScheduler _taskScheduler;
-        private readonly ITimer _timer;        
+        private readonly Timer _timer;  //beter debugging that with ITimer..  
 
         public ServerManager(ServerParameters parameters)
         {
@@ -27,7 +27,7 @@ namespace TaskSchedulerCore.Managers
 
         private void RunTasks()
         {
-            while (_timer.IsActive || !_taskScheduler.AllCurrentTasksAreDone) //we have to wait for all tasks to be finished (different solution? change IsActive ?)
+            while (TasksInQueueOrBeginProcessed)
             {
                 var currentTasks = _queueManager.GetTasksToProcess(_timer.CurrentTime);
                 _taskScheduler.AddNewTasks(currentTasks);
@@ -36,7 +36,9 @@ namespace TaskSchedulerCore.Managers
             }
         }
 
-        private ITimer GetTimer(int totalWorkingTime) => new Timer(totalWorkingTime);
+        private bool TasksInQueueOrBeginProcessed => !_queueManager.NoTasksToProcess || !_taskScheduler.AllCurrentTasksAreDone;
+
+        private Timer GetTimer(int totalWorkingTime) => new Timer(totalWorkingTime);
 
         private IQueueManager GetQueueManager()
         {
