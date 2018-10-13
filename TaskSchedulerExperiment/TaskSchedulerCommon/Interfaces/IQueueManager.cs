@@ -6,5 +6,6 @@ namespace TaskSchedulerCommon.Interfaces
     public interface IQueueManager
     {
         IEnumerable<TaskModel> GetTasksToProcess(int currentTime);
+        bool NoTasksToProcess { get; }
     }
 }

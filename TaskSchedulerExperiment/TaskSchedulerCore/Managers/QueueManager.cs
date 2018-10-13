@@ -14,6 +14,8 @@ namespace TaskSchedulerCore.Managers
             _tasks = new Queue<TaskModel>(tasks.OrderBy(x => x.CreateTime));
         }
 
+        public bool NoTasksToProcess => _tasks.Count == 0;
+
         public IEnumerable<TaskModel> GetTasksToProcess(int currentTime)
         {
             var result = new List<TaskModel>();
