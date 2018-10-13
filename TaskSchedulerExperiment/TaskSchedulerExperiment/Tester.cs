@@ -35,6 +35,6 @@ namespace TaskSchedulerExperiment
             };
         }
 
-        private static ITaskScheduler GetTaskScheduler() => new FCFSScheduler();
+        private static ITaskScheduler GetTaskScheduler() => new DoubleQueueScheduler(); //new FCFSScheduler();
     }
 }

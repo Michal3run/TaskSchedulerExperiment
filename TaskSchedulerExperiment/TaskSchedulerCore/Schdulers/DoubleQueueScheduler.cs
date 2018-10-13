@@ -9,7 +9,11 @@ namespace TaskSchedulerCore.Schdulers
         /// <summary>
         /// Tasks that are already "lost", we prefer newest tasks
         /// </summary>
-        private readonly Queue<SchedulerTask> _secondTierTasks = new Queue<SchedulerTask>();
+        private readonly List<SchedulerTask> _secondTierTasks = new List<SchedulerTask>();
+
+        private bool _currentTaskIsSecondTier;
+
+        public override bool AllCurrentTasksAreDone => base.AllCurrentTasksAreDone && _secondTierTasks.Count == 0;
 
         public override void Process(int currentTime)
         {
@@ -20,24 +24,38 @@ namespace TaskSchedulerCore.Schdulers
                     //no current tasks to process, we get seconeTier
                     if (!TrySetCurrentTask(_secondTierTasks))
                     {
-                        return; 
-                        //no tasks to process..
+                        return;
+                        //no tasks to process.. 
+                    }
+                    else
+                    {
+                        //task taken from _secondTier
+                        _currentTaskIsSecondTier = true;
                     }
                 }
             }
 
-            while (!CheckIfCurrentTaskIsBest())
+            while (!CheckIfCurrentTaskIsBest(currentTime))
             {
             }
 
-            ProcessCurrentTask(currentTime);
+            ProcessCurrentTask();
         }
 
-        private bool CheckIfCurrentTaskIsBest()
+        private bool CheckIfCurrentTaskIsBest(int currentTime)
         {
-            if (CurrentTask.IsDeyaled && ReadyTasks.Count > 0)
+            if (_currentTaskIsSecondTier && ReadyTasks.Any())
             {
-                _secondTierTasks.Enqueue(CurrentTask); //already delayed, we take next task
+                //we have better task in ReadyTasks
+                TrySetCurrentTaskFromReadyTasks(); //replaces CurrentTask with task from ReadyTasks, "old" CurrentTask from _secondTierList in still first on list
+                _currentTaskIsSecondTier = false;
+            }
+
+            CurrentTask.WaitingTime = GetTaskWaitingTime(currentTime, CurrentTask);
+
+            if (CurrentTask.IsDelayed && ReadyTasks.Any())
+            {
+                _secondTierTasks.Add(CurrentTask); //already delayed, we take next task
                 TrySetCurrentTaskFromReadyTasks();
                 return false; //we have to check task, that just have been assigned as CurrentTask
             }
@@ -47,13 +65,18 @@ namespace TaskSchedulerCore.Schdulers
             //TODO: priority: we shoud check if secondTierTasks contains better task
         }
         
-        private void ProcessCurrentTask(int currentTime)
+        private void ProcessCurrentTask()
         {
-            CurrentTask.WaitingTime = GetTaskWaitingTime(currentTime, CurrentTask);
             CurrentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
 
             if (CurrentTask.IsDone)
             {
+                if (_currentTaskIsSecondTier)
+                {
+                    _currentTaskIsSecondTier = false;
+                    _secondTierTasks.Remove(CurrentTask);
+                }
+                
                 AddCurrentTaskToDone();
             }
         }
