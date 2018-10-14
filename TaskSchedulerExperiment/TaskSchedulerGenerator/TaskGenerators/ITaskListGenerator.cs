@@ -9,6 +9,6 @@ namespace TaskSchedulerGenerator.TaskGenerators
 {
     interface ITaskListGenerator
     {
-        IEnumerable<TaskModel> GenerateTaskList(int simulationLength, int taskCount);
+        IEnumerable<TaskModel> GenerateTaskList(int ticks, int tickLength);
     }
 }

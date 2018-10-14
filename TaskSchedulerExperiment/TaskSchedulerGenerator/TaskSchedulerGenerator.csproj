@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -60,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="TaskGenerator.cs" />
     <Compile Include="Engines\Engine.cs" />
     <Compile Include="Engines\IEngine.cs" />
     <Compile Include="Engines\TestEngine.cs" />
@@ -75,8 +78,12 @@
     <Compile Include="TaskGenerators\TestTaskListGenerator.cs" />
     <Compile Include="TaskIO\IConfiguration.cs" />
     <Compile Include="TaskIO\ISaver.cs" />
+    <Compile Include="TestTaskGenerator.cs" />
+    <Compile Include="VariableCalculators\AverageTaskDurationCalculator.cs" />
+    <Compile Include="VariableCalculators\IAverageTaskDurationCalculator.cs" />
     <Compile Include="VariableCalculators\ITaskQuantityCalculator.cs" />
     <Compile Include="VariableCalculators\TaskQuantityCalculator.cs" />
+    <Compile Include="VariableCalculators\TestAverageTaskDurationCalculator.cs" />
     <Compile Include="VariableCalculators\TestTaskQuantityCalculator.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -25,31 +25,25 @@ namespace TaskSchedulerGenerator.Engines
                 CreateTask(1,1,4),
                 CreateTask(2,2,4)
             };
-            const int meanTaskLength = 5;
-            const decimal systemLoad = 0.75m;
             const int simulationLength = 10000;
-            const int taskCount = 3;
+            const int tickLength = 10;
 
             ITaskListGenerator taskListGenerator = Substitute.For<ITaskListGenerator>();
-            taskListGenerator.GenerateTaskList(simulationLength, taskCount).Returns(expectedArray);
-
-            ITaskQuantityCalculator taskQuantityCalculator = Substitute.For<ITaskQuantityCalculator>();
-            taskQuantityCalculator.CalculateTaskQuantity(simulationLength, systemLoad, meanTaskLength).Returns(taskCount);
+            taskListGenerator.GenerateTaskList(simulationLength / tickLength, tickLength).Returns(expectedArray);
+            
 
             ISaver saver = Substitute.For<ISaver>();
 
-            IConfiguration configuration = Substitute.For<IConfiguration>();            
-            configuration.MeanTaskLength.Returns(meanTaskLength);            
-            configuration.SystemLoad.Returns(systemLoad);           
+            IConfiguration configuration = Substitute.For<IConfiguration>();                
             configuration.SimulationLength.Returns(simulationLength);
+            configuration.TickLength.Returns(tickLength);
 
-            var engine = new Engine(taskListGenerator, taskQuantityCalculator, saver, configuration);
+            var engine = new Engine(taskListGenerator, saver, configuration);
 
 
             engine.Process();
-
-            taskQuantityCalculator.Received().CalculateTaskQuantity(simulationLength, systemLoad, meanTaskLength);
-            taskListGenerator.Received().GenerateTaskList(simulationLength, taskCount);
+            
+            taskListGenerator.Received().GenerateTaskList(simulationLength/tickLength, tickLength);
             saver.Received().Save(Arg.Is<IEnumerable<TaskModel>>(x => x == expectedArray));
         }
 

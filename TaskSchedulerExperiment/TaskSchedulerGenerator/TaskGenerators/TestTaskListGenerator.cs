@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerGenerator.NumberGenerators;
+using TaskSchedulerGenerator.TaskIO;
 
 namespace TaskSchedulerGenerator.TaskGenerators
 {
@@ -20,7 +21,12 @@ namespace TaskSchedulerGenerator.TaskGenerators
             INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
             INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
             INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(10);
-            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
+            var configuraton = Substitute.For<IConfiguration>();
+            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
+            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
+            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+
+            var listGenerator = new TaskListGenerator(configuraton);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -35,11 +41,36 @@ namespace TaskSchedulerGenerator.TaskGenerators
             INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
             INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
             INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(20);
-            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
+            var configuraton = Substitute.For<IConfiguration>();
+            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
+            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
+            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+
+            var listGenerator = new TaskListGenerator(configuraton);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
             var expectedTasks = Enumerable.Range(0, 20).Select(x => new TaskModel { CreateTime = x/2, Duration = 1, MaxWaitingTime = 2 });
+            tasks.ShouldBe(expectedTasks);
+
+        }
+
+        [Test]
+        public void TestGenerateTaskListWithConstantGeneratorsGeneratingError()
+        {
+            INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
+            INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
+            INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(5);
+            var configuraton = Substitute.For<IConfiguration>();
+            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
+            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
+            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+
+            var listGenerator = new TaskListGenerator(configuraton);
+
+            var tasks = listGenerator.GenerateTaskList(1, 10);
+
+            var expectedTasks = Enumerable.Range(0, 5).Select(x => new TaskModel { CreateTime = x * 2, Duration = 1, MaxWaitingTime = 2 });
             tasks.ShouldBe(expectedTasks);
 
         }

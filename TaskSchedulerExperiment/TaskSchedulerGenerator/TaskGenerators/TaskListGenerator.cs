@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerGenerator.NumberGenerators;
+using TaskSchedulerGenerator.TaskIO;
 
 namespace TaskSchedulerGenerator.TaskGenerators
 {
@@ -14,11 +15,11 @@ namespace TaskSchedulerGenerator.TaskGenerators
         INumberGenerator MaxDelayGenerator;
         INumberGenerator TaskPerTickGenerator;
 
-        public TaskListGenerator(INumberGenerator taskLengthGenerator, INumberGenerator maxDelayGenerator, INumberGenerator taskPerTickGenerator)
+        public TaskListGenerator(IConfiguration configuration)
         {
-            TaskLengthGenerator = taskLengthGenerator;
-            MaxDelayGenerator = maxDelayGenerator;
-            TaskPerTickGenerator = taskPerTickGenerator;
+            TaskLengthGenerator = configuration.TaskLengthGenerator;
+            MaxDelayGenerator = configuration.MaxDelayGenerator;
+            TaskPerTickGenerator = configuration.TaskPerTickGenerator;
         }
 
         public IEnumerable<TaskModel> GenerateTaskList(int ticks, int tickLength)

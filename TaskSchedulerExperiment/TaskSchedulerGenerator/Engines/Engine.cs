@@ -12,22 +12,20 @@ namespace TaskSchedulerGenerator.Engines
     class Engine : IEngine
     {
         ITaskListGenerator TaskListGenerator;
-        ITaskQuantityCalculator TaskQuantityCalculator;
         ISaver Saver;
         IConfiguration Configuration;
 
-        public Engine(ITaskListGenerator taskListGenerator, ITaskQuantityCalculator taskQuantityCalculator, ISaver saver, IConfiguration configuration)
+        public Engine(ITaskListGenerator taskListGenerator, ISaver saver, IConfiguration configuration)
         {
             TaskListGenerator = taskListGenerator;
-            TaskQuantityCalculator = taskQuantityCalculator;
             Saver = saver;
             Configuration = configuration;
         }
 
         public void Process()
-        {            
-            var taskCount = TaskQuantityCalculator.CalculateTaskQuantity(Configuration.SimulationLength, Configuration.SystemLoad, Configuration.MeanTaskLength);
-            var tasks = TaskListGenerator.GenerateTaskList(Configuration.SimulationLength, taskCount);
+        {
+            var tickLength = Configuration.TickLength;
+            var tasks = TaskListGenerator.GenerateTaskList(Configuration.SimulationLength/tickLength, tickLength);
             Saver.Save(tasks);
         }
     }
