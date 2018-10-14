@@ -61,9 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="DummyNs\Dummy.cs" />
-    <Compile Include="DummyNs\TestDummy.cs" />
     <Compile Include="NumberGenerators\ConstantGenerator.cs" />
+    <Compile Include="NumberGenerators\GaussianRandomNumberGenerator.cs" />
     <Compile Include="NumberGenerators\TestConstantGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NumberGenerators\INumberGenerator.cs" />
