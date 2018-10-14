@@ -12,8 +12,8 @@ namespace TaskSchedulerCommon.Models
         /// <summary>
         /// Processor time spend during task
         /// </summary>
-        public int ProcessedTime { get; set; }
+        public float ProcessedTime { get; set; }
 
-        public int? WaitingTime { get; set; }
+        public float? WaitingTime { get; set; }
     }
 }

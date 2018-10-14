@@ -81,7 +81,7 @@ namespace TaskSchedulerCore.Schdulers
             }
         }
         
-        private int GetTaskWaitingTime(int currentTime, SchedulerTask task)
+        private float GetTaskWaitingTime(int currentTime, SchedulerTask task)
         {
             var timeFromCreate = currentTime - task.CreateTime;
             var waitingTime = timeFromCreate - task.ProcessedTime; //time when task is processed is not counted as waitingTime
