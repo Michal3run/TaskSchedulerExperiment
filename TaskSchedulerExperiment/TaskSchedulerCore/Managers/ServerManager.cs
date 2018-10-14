@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TaskSchedulerCommon;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerData.Reading;
@@ -10,12 +11,12 @@ namespace TaskSchedulerCore.Managers
     {
         private readonly IQueueManager _queueManager;
         private readonly ITaskScheduler _taskScheduler;
-        private readonly Timer _timer;  //beter debugging that with ITimer..  
+        private readonly Timer _timer;
 
         public ServerManager(ServerParameters parameters)
         {
-            _taskScheduler = parameters.TaskScheduler;
-            _timer = GetTimer(parameters.TotalWorkingTime);
+            _taskScheduler = GetTaskScheduler(parameters.SchedulerType);
+            _timer = GetTimer();
             _queueManager = GetQueueManager();
         }
 
@@ -38,7 +39,9 @@ namespace TaskSchedulerCore.Managers
 
         private bool TasksInQueueOrBeginProcessed => !_queueManager.NoTasksToProcess || !_taskScheduler.AllCurrentTasksAreDone;
 
-        private Timer GetTimer(int totalWorkingTime) => new Timer(totalWorkingTime);
+        private ITaskScheduler GetTaskScheduler(ESchedulerType type) => SchedulerManager.GetTaskScheduler(type);
+
+        private Timer GetTimer() => new Timer();
 
         private IQueueManager GetQueueManager()
         {

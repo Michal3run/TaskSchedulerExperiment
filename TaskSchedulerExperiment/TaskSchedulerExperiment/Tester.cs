@@ -1,4 +1,5 @@
 ﻿using System;
+using TaskSchedulerCommon;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerCore.Managers;
@@ -30,11 +31,8 @@ namespace TaskSchedulerExperiment
         {
             return new ServerParameters
             {
-                TotalWorkingTime = 120,
-                TaskScheduler = GetTaskScheduler()
+               SchedulerType = ESchedulerType.RoundRobin
             };
         }
-
-        private static ITaskScheduler GetTaskScheduler() => new DoubleQueueScheduler(); //new FCFSScheduler();
     }
 }
