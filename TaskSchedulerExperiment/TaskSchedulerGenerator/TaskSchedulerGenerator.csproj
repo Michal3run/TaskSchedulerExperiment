@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.3.1.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -41,7 +47,11 @@
       <HintPath>..\packages\Shouldly.3.0.1\lib\net451\Shouldly.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +63,13 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DummyNs\Dummy.cs" />
     <Compile Include="DummyNs\TestDummy.cs" />
+    <Compile Include="NumberGenerators\ConstantGenerator.cs" />
+    <Compile Include="NumberGenerators\TestConstantGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NumberGenerators\INumberGenerator.cs" />
+    <Compile Include="TaskGenerators\ITaskListGenerator.cs" />
+    <Compile Include="TaskGenerators\TaskListGenerator.cs" />
+    <Compile Include="TaskGenerators\TestTaskListGenerator.cs" />
     <Compile Include="VariableCalculators\AverageTaskDurationCalculator.cs" />
     <Compile Include="VariableCalculators\IAverageTaskDurationCalculator.cs" />
     <Compile Include="VariableCalculators\ITaskQuantityCalculator.cs" />
@@ -63,6 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskSchedulerCommon\TaskSchedulerCommon.csproj">
+      <Project>{b8e40f20-6723-4317-9d02-6b056405dff9}</Project>
+      <Name>TaskSchedulerCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

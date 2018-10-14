@@ -16,5 +16,14 @@ namespace TaskSchedulerCommon.Models
         public int Duration { get; set; }
 
         public int MaxWaitingTime { get; set; } = 5; //TODO later
+
+        public override bool Equals(object obj)
+        {
+            var model = obj as TaskModel;
+            return model != null &&
+                   CreateTime == model.CreateTime &&
+                   Duration == model.Duration &&
+                   MaxWaitingTime == model.MaxWaitingTime;
+        }
     }
 }
