@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TaskSchedulerCommon;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerData.Reading;
@@ -10,12 +11,12 @@ namespace TaskSchedulerCore.Managers
     {
         private readonly IQueueManager _queueManager;
         private readonly ITaskScheduler _taskScheduler;
-        private readonly ITimer _timer;        
+        private readonly Timer _timer;
 
         public ServerManager(ServerParameters parameters)
         {
-            _taskScheduler = parameters.TaskScheduler;
-            _timer = GetTimer(parameters.TotalWorkingTime);
+            _taskScheduler = GetTaskScheduler(parameters.SchedulerType);
+            _timer = GetTimer();
             _queueManager = GetQueueManager();
         }
 
@@ -27,7 +28,7 @@ namespace TaskSchedulerCore.Managers
 
         private void RunTasks()
         {
-            while (_timer.IsActive || !_taskScheduler.AllCurrentTasksAreDone) //we have to wait for all tasks to be finished (different solution? change IsActive ?)
+            while (TasksInQueueOrBeginProcessed)
             {
                 var currentTasks = _queueManager.GetTasksToProcess(_timer.CurrentTime);
                 _taskScheduler.AddNewTasks(currentTasks);
@@ -36,7 +37,11 @@ namespace TaskSchedulerCore.Managers
             }
         }
 
-        private ITimer GetTimer(int totalWorkingTime) => new Timer(totalWorkingTime);
+        private bool TasksInQueueOrBeginProcessed => !_queueManager.NoTasksToProcess || !_taskScheduler.AllCurrentTasksAreDone;
+
+        private ITaskScheduler GetTaskScheduler(ESchedulerType type) => SchedulerManager.GetTaskScheduler(type);
+
+        private Timer GetTimer() => new Timer();
 
         private IQueueManager GetQueueManager()
         {

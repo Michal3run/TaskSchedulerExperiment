@@ -40,9 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ESchedulerType.cs" />
     <Compile Include="Interfaces\IQueueManager.cs" />
     <Compile Include="Interfaces\ITaskScheduler.cs" />
-    <Compile Include="Interfaces\ITimer.cs" />
     <Compile Include="Models\GeneratorInput.cs" />
     <Compile Include="Models\ProcessingOutput.cs" />
     <Compile Include="Models\SchedulerTask.cs" />
