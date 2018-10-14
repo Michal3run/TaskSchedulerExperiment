@@ -12,7 +12,7 @@ namespace TaskSchedulerCore.Schdulers
         public override void Process(int currentTime)
         {
             if (ReadyTasks.Count == 0) return;
-            
+
             var processingTime = 1 / (float)ReadyTasks.Count;
 
             while (ReadyTasks.Any())

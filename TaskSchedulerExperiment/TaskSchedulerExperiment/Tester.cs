@@ -1,9 +1,7 @@
 ﻿using System;
 using TaskSchedulerCommon;
-using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerCore.Managers;
-using TaskSchedulerCore.Schdulers;
 
 namespace TaskSchedulerExperiment
 {
@@ -11,15 +9,16 @@ namespace TaskSchedulerExperiment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine($"Getting parameters");
+            Console.WriteLine("Getting parameters");
 
             var parameters = GetServerParameters();
 
-            Console.WriteLine($"Creating server manager");
+            Console.WriteLine($"SchedulerType: {parameters.SchedulerType.ToString()}");
+            Console.WriteLine("Creating server manager");
 
             using (var serverManager = new ServerManager(parameters))
             {
-                Console.WriteLine($"Processing...");
+                Console.WriteLine("Processing...");
                 var output = serverManager.GetProcessingOutput();
                 Console.WriteLine($"Finished! Percent of delayed tasks: {output?.PercentOfDelayedTasks} %");
                 Console.WriteLine($"Press any key to exit");
@@ -31,7 +30,7 @@ namespace TaskSchedulerExperiment
         {
             return new ServerParameters
             {
-               SchedulerType = ESchedulerType.RoundRobin
+                SchedulerType = ESchedulerType.RoundRobin
             };
         }
     }
