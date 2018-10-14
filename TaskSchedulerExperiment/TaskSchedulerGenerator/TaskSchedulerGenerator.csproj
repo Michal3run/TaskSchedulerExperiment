@@ -61,19 +61,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Engines\Engine.cs" />
+    <Compile Include="Engines\IEngine.cs" />
+    <Compile Include="Engines\TestEngine.cs" />
     <Compile Include="NumberGenerators\ConstantGenerator.cs" />
     <Compile Include="NumberGenerators\GaussianRandomNumberGenerator.cs" />
     <Compile Include="NumberGenerators\TestConstantGenerator.cs" />
+    <Compile Include="NumberGenerators\UniformRandomNumberGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NumberGenerators\INumberGenerator.cs" />
     <Compile Include="TaskGenerators\ITaskListGenerator.cs" />
     <Compile Include="TaskGenerators\TaskListGenerator.cs" />
     <Compile Include="TaskGenerators\TestTaskListGenerator.cs" />
-    <Compile Include="VariableCalculators\AverageTaskDurationCalculator.cs" />
-    <Compile Include="VariableCalculators\IAverageTaskDurationCalculator.cs" />
+    <Compile Include="TaskIO\IConfiguration.cs" />
+    <Compile Include="TaskIO\ISaver.cs" />
     <Compile Include="VariableCalculators\ITaskQuantityCalculator.cs" />
     <Compile Include="VariableCalculators\TaskQuantityCalculator.cs" />
-    <Compile Include="VariableCalculators\TestAverageTaskDurationCalculator.cs" />
     <Compile Include="VariableCalculators\TestTaskQuantityCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
