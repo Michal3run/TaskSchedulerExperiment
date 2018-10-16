@@ -15,13 +15,13 @@ namespace TaskSchedulerData.Reading
         /// <summary>
         /// Mock implementation, replace with reading from file
         /// </summary>
-        private IEnumerable<TaskModel> GetMockTasks() => Enumerable.Range(0, 10).Select(GetTaskModel).ToList();
+        private IEnumerable<TaskModel> GetMockTasks() => Enumerable.Range(0, 100000).Select(GetTaskModel).ToList();
 
         private TaskModel GetTaskModel(int i)
         {
             return new TaskModel
             {
-                CreateTime = GetRandomInt(0, 100), 
+                CreateTime = GetRandomInt(0, 500000), 
                 Duration = GetRandomInt(1, 8)
             };
         }

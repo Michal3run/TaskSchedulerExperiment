@@ -64,10 +64,10 @@ namespace TaskSchedulerCore.Schdulers
             //task is not delayed, or delayed, but we don't have any more tasks
             //TODO: priority: we shoud check if secondTierTasks contains better task
         }
-        
+
         private void ProcessCurrentTask()
         {
-            CurrentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
+            CurrentTask.ProcessedTime++;
 
             if (CurrentTask.IsDone)
             {
@@ -76,11 +76,11 @@ namespace TaskSchedulerCore.Schdulers
                     _currentTaskIsSecondTier = false;
                     _secondTierTasks.Remove(CurrentTask);
                 }
-                
+
                 AddCurrentTaskToDone();
             }
         }
-        
+
         private float GetTaskWaitingTime(int currentTime, SchedulerTask task)
         {
             var timeFromCreate = currentTime - task.CreateTime;

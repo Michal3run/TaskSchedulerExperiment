@@ -12,6 +12,9 @@ namespace TaskSchedulerCore.Schdulers
 
         protected Queue<SchedulerTask> ReadyTasks { get; } = new Queue<SchedulerTask>();
 
+        /// <summary>
+        /// Task that is currently being processed
+        /// </summary>
         protected SchedulerTask CurrentTask { get; private set; }
 
         public abstract void Process(int currentTime);
@@ -44,7 +47,7 @@ namespace TaskSchedulerCore.Schdulers
             return true;
         }
 
-        protected bool TrySetCurrentTask(List<SchedulerTask> source)
+        protected bool TrySetCurrentTask(IEnumerable<SchedulerTask> source)
         {
             CurrentTask = source.FirstOrDefault();
             return CurrentTask != null;

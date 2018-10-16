@@ -18,11 +18,11 @@
 
         private void ProcessCurrentTask(int currentTime)
         {
-            CurrentTask.WaitingTime = CurrentTask.WaitingTime ?? currentTime - CurrentTask.CreateTime; //simple case, without expropriation
-            CurrentTask.ProcessedTime++; //TODO: merge with Timer.Tick() to keep consistency
+            CurrentTask.ProcessedTime++;
 
             if (CurrentTask.IsDone)
             {
+                CurrentTask.WaitingTime = CurrentTask.WaitingTime ?? currentTime - CurrentTask.CreateTime; //simple case, without expropriation
                 AddCurrentTaskToDone();
             }
         }
