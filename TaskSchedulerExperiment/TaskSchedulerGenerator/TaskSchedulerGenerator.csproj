@@ -40,6 +40,9 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="CsvHelper, Version=7.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.7.1.1\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.3.1.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
@@ -63,6 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NumberGenerators\IAnyGenerator.cs" />
+    <Compile Include="NumberGenerators\IMaxDelayGenerator.cs" />
+    <Compile Include="NumberGenerators\ITaskLengthGenerator.cs" />
+    <Compile Include="NumberGenerators\ITaskPerTickGenerator.cs" />
     <Compile Include="TaskGenerator.cs" />
     <Compile Include="Engines\Engine.cs" />
     <Compile Include="Engines\IEngine.cs" />
@@ -76,6 +83,8 @@
     <Compile Include="TaskGenerators\ITaskListGenerator.cs" />
     <Compile Include="TaskGenerators\TaskListGenerator.cs" />
     <Compile Include="TaskGenerators\TestTaskListGenerator.cs" />
+    <Compile Include="TaskIO\Configuration.cs" />
+    <Compile Include="TaskIO\CsvSaver.cs" />
     <Compile Include="TaskIO\IConfiguration.cs" />
     <Compile Include="TaskIO\ISaver.cs" />
     <Compile Include="TestTaskGenerator.cs" />

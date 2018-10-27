@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskSchedulerGenerator.NumberGenerators
 {
-    class UniformRandomNumberGenerator : INumberGenerator
+    public class UniformRandomNumberGenerator : IAnyGenerator
     {
         float MaximalValue;
         float MinimalValue;

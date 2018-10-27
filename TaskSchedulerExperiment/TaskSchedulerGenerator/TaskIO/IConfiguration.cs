@@ -7,14 +7,15 @@ using TaskSchedulerGenerator.NumberGenerators;
 
 namespace TaskSchedulerGenerator.TaskIO
 {
-    interface IConfiguration
+    public interface IConfiguration
     {
         int SimulationLength { get; }
         decimal SystemLoad { get; }
         int MeanTaskLength { get; }
         int TickLength { get; }
-        INumberGenerator TaskLengthGenerator { get; }
-        INumberGenerator MaxDelayGenerator { get; }
-        INumberGenerator TaskPerTickGenerator { get; }
+        string OutputPath { get; }
+        IMaxDelayGenerator MaxDelayGenerator { get; }
+        ITaskLengthGenerator TaskLengthGenerator { get; }
+        ITaskPerTickGenerator TaskPerTickGenerator { get; }
     }
 }

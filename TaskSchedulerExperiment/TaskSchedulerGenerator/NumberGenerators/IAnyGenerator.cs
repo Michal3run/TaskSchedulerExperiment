@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskSchedulerGenerator.NumberGenerators
 {
-    public interface INumberGenerator
+    public interface IAnyGenerator: ITaskPerTickGenerator, IMaxDelayGenerator, ITaskLengthGenerator
     {
-        float GetNumber();
     }
 }

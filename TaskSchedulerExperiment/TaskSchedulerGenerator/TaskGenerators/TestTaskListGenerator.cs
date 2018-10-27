@@ -18,15 +18,11 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGenerators()
         {
-            INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
-            INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
-            INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(10);
-            var configuraton = Substitute.For<IConfiguration>();
-            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
-            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
-            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
+            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
+            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(10);
 
-            var listGenerator = new TaskListGenerator(configuraton);
+            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -38,15 +34,11 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGeneratorsAndDoubleRate()
         {
-            INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
-            INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
-            INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(20);
-            var configuraton = Substitute.For<IConfiguration>();
-            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
-            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
-            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
+            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
+            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(20);
 
-            var listGenerator = new TaskListGenerator(configuraton);
+            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -58,15 +50,11 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGeneratorsGeneratingError()
         {
-            INumberGenerator taskLengthGenerator = CreateConstantNumberGenerator(1);
-            INumberGenerator maxDelayGenerator = CreateConstantNumberGenerator(2);
-            INumberGenerator taskPerTickGenerator = CreateConstantNumberGenerator(5);
-            var configuraton = Substitute.For<IConfiguration>();
-            configuraton.TaskLengthGenerator.Returns(taskLengthGenerator);
-            configuraton.MaxDelayGenerator.Returns(maxDelayGenerator);
-            configuraton.TaskPerTickGenerator.Returns(taskPerTickGenerator);
+            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
+            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
+            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(5);
 
-            var listGenerator = new TaskListGenerator(configuraton);
+            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -75,9 +63,9 @@ namespace TaskSchedulerGenerator.TaskGenerators
 
         }
 
-        private INumberGenerator CreateConstantNumberGenerator(int constantNumber)
+        private T CreateConstantNumberGenerator<T>(int constantNumber) where T: class, INumberGenerator
         {
-            var generator = Substitute.For<INumberGenerator>();
+            var generator = Substitute.For<T>();
             generator.GetNumber().Returns(constantNumber);
             return generator;
         }

@@ -24,11 +24,9 @@ namespace TaskSchedulerGenerator
             configuration.SystemLoad.Returns(0.5m);
             configuration.MeanTaskLength.Returns(1);
             configuration.TickLength.Returns(10);
-            configuration.TaskLengthGenerator.Returns(new ConstantGenerator(1f));
-            configuration.MaxDelayGenerator.Returns(new ConstantGenerator(2f));
-            configuration.TaskPerTickGenerator.Returns(new ConstantGenerator(5));
-
-
+            configuration.MaxDelayGenerator.Returns(new ConstantGenerator(1f));
+            configuration.TaskLengthGenerator.Returns(new ConstantGenerator(2f));
+            configuration.TaskPerTickGenerator.Returns(new ConstantGenerator(5f));
 
             var generator = new TaskGenerator(saver, configuration);
 

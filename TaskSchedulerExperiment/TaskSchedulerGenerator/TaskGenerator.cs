@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskSchedulerGenerator.Engines;
+using TaskSchedulerGenerator.NumberGenerators;
 using TaskSchedulerGenerator.TaskGenerators;
 using TaskSchedulerGenerator.TaskIO;
 using TaskSchedulerGenerator.VariableCalculators;
@@ -15,10 +16,22 @@ namespace TaskSchedulerGenerator
     {
         ContainerBuilder Builder;
 
+        public TaskGenerator(IConfiguration configuration) : this()
+        {
+            Builder.RegisterInstance(configuration).As<IConfiguration>();
+            Builder.RegisterType<CsvSaver>().As<ISaver>();
+            Builder.Register(x => configuration.MaxDelayGenerator).As<IMaxDelayGenerator>();
+            Builder.Register(x => configuration.TaskLengthGenerator).As<ITaskLengthGenerator>();
+            Builder.Register(x => configuration.TaskPerTickGenerator).As<ITaskPerTickGenerator>();
+        }
+
         internal TaskGenerator(ISaver saver, IConfiguration configuration) : this()
         {
             Builder.RegisterInstance(saver).As<ISaver>();
             Builder.RegisterInstance(configuration).As<IConfiguration>();
+            Builder.Register(x => configuration.MaxDelayGenerator).As<IMaxDelayGenerator>();
+            Builder.Register(x => configuration.TaskLengthGenerator).As<ITaskLengthGenerator>();
+            Builder.Register(x => configuration.TaskPerTickGenerator).As<ITaskPerTickGenerator>();
         }
 
         private TaskGenerator()
@@ -35,7 +48,7 @@ namespace TaskSchedulerGenerator
             using (var scope = container.BeginLifetimeScope())
             {
                 var engine = scope.Resolve<IEngine>();
-                engine.Process();                
+                engine.Process();
             }
         }
     }

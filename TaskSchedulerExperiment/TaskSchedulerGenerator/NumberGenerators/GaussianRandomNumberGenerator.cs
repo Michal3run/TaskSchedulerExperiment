@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskSchedulerGenerator.NumberGenerators
 {
-    class GaussianRandomNumberGenerator : INumberGenerator
+    public class GaussianRandomNumberGenerator : IAnyGenerator
     {
         float StdDev;
         float Mean;

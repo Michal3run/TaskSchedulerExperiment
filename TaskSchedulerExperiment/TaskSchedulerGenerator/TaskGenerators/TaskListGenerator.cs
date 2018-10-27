@@ -11,15 +11,15 @@ namespace TaskSchedulerGenerator.TaskGenerators
 {
     class TaskListGenerator : ITaskListGenerator
     {
-        INumberGenerator TaskLengthGenerator;
-        INumberGenerator MaxDelayGenerator;
-        INumberGenerator TaskPerTickGenerator;
+        ITaskLengthGenerator TaskLengthGenerator;
+        IMaxDelayGenerator MaxDelayGenerator;
+        ITaskPerTickGenerator TaskPerTickGenerator;
 
-        public TaskListGenerator(IConfiguration configuration)
+        public TaskListGenerator(ITaskLengthGenerator taskLengthGenerator, IMaxDelayGenerator maxDelayGenerator, ITaskPerTickGenerator taskPerTickGenerator)
         {
-            TaskLengthGenerator = configuration.TaskLengthGenerator;
-            MaxDelayGenerator = configuration.MaxDelayGenerator;
-            TaskPerTickGenerator = configuration.TaskPerTickGenerator;
+            TaskLengthGenerator = taskLengthGenerator;
+            MaxDelayGenerator = maxDelayGenerator;
+            TaskPerTickGenerator = taskPerTickGenerator;
         }
 
         public IEnumerable<TaskModel> GenerateTaskList(int ticks, int tickLength)

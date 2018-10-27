@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskSchedulerGenerator.NumberGenerators
 {
-    class ConstantGenerator : INumberGenerator
+    public class ConstantGenerator : IAnyGenerator
     {
         float ConstantNumber;
 
