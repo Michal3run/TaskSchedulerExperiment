@@ -30,7 +30,8 @@ namespace TaskSchedulerExperiment
         {
             return new ServerParameters
             {
-                SchedulerType = ESchedulerType.RoundRobin
+                SchedulerType = ESchedulerType.FCFS,
+                TasksFilePath = @"..\..\..\Input\output.csv"
             };
         }
     }

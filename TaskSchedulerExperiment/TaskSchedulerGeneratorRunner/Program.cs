@@ -22,7 +22,7 @@ namespace TaskSchedulerGeneratorRunner
                 TickLength = 10,
                 SystemLoad = 0.5m,
                 MeanTaskLength = 5,
-                OutputPath = @".\output.csv",
+                OutputPath = @"..\..\..\Input\output.csv",
 
             };
             var generator = new TaskGenerator(configuration);
