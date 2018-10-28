@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
@@ -30,10 +31,12 @@ namespace TaskSchedulerCore.Schdulers
         public ProcessingOutput GetProcessingOutput()
         {
             var delayedTasks = (decimal)_doneTasks.Count(t => t.IsDelayed);
+            var realPercentOfDelayedTasks = _doneTasks.Count == 0 ? 0 : delayedTasks / _doneTasks.Count * 100;
+            var roundedPercentOfDelayedTasks = Math.Round(realPercentOfDelayedTasks, 5, MidpointRounding.AwayFromZero);
 
             return new ProcessingOutput
             {
-                PercentOfDelayedTasks = _doneTasks.Count == 0 ? 0 : delayedTasks / _doneTasks.Count * 100
+                PercentOfDelayedTasks = roundedPercentOfDelayedTasks
             };
         }
 
