@@ -15,11 +15,11 @@ namespace TaskSchedulerGeneratorRunner
         {
             var configuration = new Configuration
             {
-                MaxDelayGenerator = new UniformRandomNumberGenerator(4,6),
-                TaskLengthGenerator = new UniformRandomNumberGenerator(1, 10),
-                TaskPerTickGenerator = new UniformRandomNumberGenerator(0, 20),
+                MaxDelayGenerator = new UniformRandomNumberGenerator(4,20),
+                TaskLengthGenerator = new UniformRandomNumberGenerator(1, 3),
+                TaskPerTickGenerator = new UniformRandomNumberGenerator(0, 10),
                 SimulationLength = 10000,
-                TickLength = 10,
+                TickLength = 20,
                 SystemLoad = 0.5m,
                 MeanTaskLength = 5,
                 OutputPath = @"..\..\..\Input\output.csv",
