@@ -58,6 +58,10 @@
       <Project>{7cf90d0d-1539-4a9b-b5ea-d07afbafd77c}</Project>
       <Name>TaskSchedulerData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskSchedulerGenerator\TaskSchedulerGenerator.csproj">
+      <Project>{3b5733e4-f799-4b3a-8f8a-1dbafff831e6}</Project>
+      <Name>TaskSchedulerGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

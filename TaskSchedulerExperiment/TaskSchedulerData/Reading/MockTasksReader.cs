@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using static TaskSchedulerData.Helpers.RandomHelper;
 
 namespace TaskSchedulerData.Reading
 {
-    public class TaskReader
+    public class MockTasksReader : IReader
     {
-        public IEnumerable<TaskModel> ReadAllTasks()
+        public IEnumerable<TaskModel> Read()
         {
             return GetMockTasks();
         }

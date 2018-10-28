@@ -4,6 +4,7 @@ using TaskSchedulerCommon;
 using TaskSchedulerCommon.Interfaces;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerData.Reading;
+using TaskSchedulerGenerator.TaskIO;
 
 namespace TaskSchedulerCore.Managers
 {
@@ -12,10 +13,12 @@ namespace TaskSchedulerCore.Managers
         private readonly IQueueManager _queueManager;
         private readonly ITaskScheduler _taskScheduler;
         private readonly Timer _timer;
+        private readonly string _tasksFilePath;
 
         public ServerManager(ServerParameters parameters)
         {
             _taskScheduler = GetTaskScheduler(parameters.SchedulerType);
+            _tasksFilePath = parameters.TasksFilePath;
             _timer = GetTimer();
             _queueManager = GetQueueManager();
         }
@@ -51,8 +54,10 @@ namespace TaskSchedulerCore.Managers
 
         private IEnumerable<TaskModel> GetTasks()
         {
-            var reader = new TaskReader();
-            return reader.ReadAllTasks();
+            var reader = new CsvReader(_tasksFilePath);
+            return reader.Read();
+            //var reader = new TaskReader();
+            //return reader.ReadAllTasks();
         }
 
         public void Dispose()
