@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Enums\ESchedulerType.cs" />
     <Compile Include="Interfaces\IQueueManager.cs" />
+    <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Interfaces\ITaskScheduler.cs" />
     <Compile Include="Models\GeneratorInput.cs" />
     <Compile Include="Models\ProcessingOutput.cs" />
