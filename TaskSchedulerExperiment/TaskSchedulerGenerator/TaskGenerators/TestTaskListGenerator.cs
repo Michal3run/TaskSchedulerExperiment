@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerGenerator.NumberGenerators;
 using TaskSchedulerGenerator.TaskIO;
+using TaskSchedulerGenerator.VariableCalculators;
 
 namespace TaskSchedulerGenerator.TaskGenerators
 {
@@ -18,11 +19,7 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGenerators()
         {
-            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
-            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
-            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(10);
-
-            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
+            var listGenerator = CreateGenerator(1, 2, 10);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -34,11 +31,7 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGeneratorsAndDoubleRate()
         {
-            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
-            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
-            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(20);
-
-            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
+            var listGenerator = CreateGenerator(1, 2, 20);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -50,11 +43,7 @@ namespace TaskSchedulerGenerator.TaskGenerators
         [Test]
         public void TestGenerateTaskListWithConstantGeneratorsGeneratingError()
         {
-            var taskLengthGenerator = CreateConstantNumberGenerator<ITaskLengthGenerator>(1);
-            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(2);
-            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(5);
-
-            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator);
+            var listGenerator = CreateGenerator(1, 2, 5);
 
             var tasks = listGenerator.GenerateTaskList(1, 10);
 
@@ -63,11 +52,31 @@ namespace TaskSchedulerGenerator.TaskGenerators
 
         }
 
+        private ITaskListGenerator CreateGenerator(int taskLength, int maxDelay, int taskPerTick)
+        {
+            var taskLengthGenerator = new ConstantGenerator();
+            var maxDelayGenerator = CreateConstantNumberGenerator<IMaxDelayGenerator>(maxDelay);
+            var taskPerTickGenerator = CreateConstantNumberGenerator<ITaskPerTickGenerator>(taskPerTick);
+            var configuration = CreateConfiguration(0, taskLength);
+
+            var listGenerator = new TaskListGenerator(taskLengthGenerator, maxDelayGenerator, taskPerTickGenerator, configuration, new TaskQuantityCalculator(), new AverageTaskDurationCalculator());
+            return listGenerator;
+        }
+
         private T CreateConstantNumberGenerator<T>(int constantNumber) where T: class, INumberGenerator
         {
             var generator = Substitute.For<T>();
             generator.GetNumber().Returns(constantNumber);
             return generator;
+        }
+
+        private IConfiguration CreateConfiguration(decimal load, int taskLength)
+        {
+            var configuration = Substitute.For<IConfiguration>();
+            configuration.SystemLoad.Returns(load);
+            configuration.MeanTaskLength.Returns(taskLength);
+            configuration.CoefficientOfVariationTaskLength.Returns(0);
+            return configuration;
         }
     }
 }

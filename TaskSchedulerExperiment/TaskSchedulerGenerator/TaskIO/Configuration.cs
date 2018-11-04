@@ -15,6 +15,8 @@ namespace TaskSchedulerGenerator.TaskIO
 
         public int MeanTaskLength { get; set; }
 
+        public float CoefficientOfVariationTaskLength { get; set; }
+        
         public int TickLength { get; set; }
 
         public string OutputPath { get; set; }
@@ -24,5 +26,11 @@ namespace TaskSchedulerGenerator.TaskIO
         public ITaskLengthGenerator TaskLengthGenerator { get; set; }
 
         public ITaskPerTickGenerator TaskPerTickGenerator { get; set; }
+
+        public float CoefficientOfVariationMaxDelay { get; set; }
+
+        public float MeanMaxDelay { get; set; }
+
+        public float CoefficientOfVariationTaskPerTick { get; set; }
     }
 }

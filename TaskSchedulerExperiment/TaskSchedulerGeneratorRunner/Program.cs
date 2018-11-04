@@ -15,15 +15,22 @@ namespace TaskSchedulerGeneratorRunner
         {
             var configuration = new Configuration
             {
-                MaxDelayGenerator = new UniformRandomNumberGenerator(4,20),
-                TaskLengthGenerator = new UniformRandomNumberGenerator(1, 3),
-                TaskPerTickGenerator = new UniformRandomNumberGenerator(0, 10),
-                SimulationLength = 10000,
+                MaxDelayGenerator = new UniformRandomNumberGenerator(),
+                TaskLengthGenerator = new UniformRandomNumberGenerator(),
+                TaskPerTickGenerator = new UniformRandomNumberGenerator(),
+                SimulationLength = 1000000,
                 TickLength = 20,
                 SystemLoad = 0.5m,
-                MeanTaskLength = 5,
-                OutputPath = @"..\..\..\Input\output.csv",
 
+                MeanTaskLength = 5,
+                CoefficientOfVariationTaskLength = 0.2f,
+
+                MeanMaxDelay = 12,
+                CoefficientOfVariationMaxDelay = 2f / 3f,
+
+                CoefficientOfVariationTaskPerTick = 1f,
+
+                OutputPath = @"..\..\..\Input\output.csv",
             };
             var generator = new TaskGenerator(configuration);
             generator.Generate();

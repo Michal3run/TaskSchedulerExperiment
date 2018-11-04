@@ -8,21 +8,25 @@ namespace TaskSchedulerGenerator.NumberGenerators
 {
     public class UniformRandomNumberGenerator : IAnyGenerator
     {
-        float MaximalValue;
-        float MinimalValue;
+        int MaximalValue;
+        int MinimalValue;
         Random rand;
 
-        public UniformRandomNumberGenerator(float minimalValue, float maximalValue)
+        public UniformRandomNumberGenerator()
         {
-            MaximalValue = maximalValue;
-            MinimalValue = minimalValue;
             rand = new Random();
         }
 
-        public float GetNumber()
+        public int GetNumber()
         {
-            var generatedRandom = MinimalValue + rand.NextDouble() * (MaximalValue - MinimalValue);
-            return (float)generatedRandom;
+            return rand.Next(MinimalValue, MaximalValue);
+        }
+
+        public void Initialize(float mean, float coefficientOfVariation)
+        {
+            //This is not correct from the point of view of mathematics but it looks more intuitive to me
+            MaximalValue = Convert.ToInt32(Math.Floor((1 + coefficientOfVariation) * mean)) + 1;
+            MinimalValue = Convert.ToInt32(Math.Ceiling((1 - coefficientOfVariation) * mean));
         }
     }
 }

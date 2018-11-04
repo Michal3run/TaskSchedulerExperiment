@@ -8,16 +8,16 @@ namespace TaskSchedulerGenerator.NumberGenerators
 {
     public class ConstantGenerator : IAnyGenerator
     {
-        float ConstantNumber;
-
-        public ConstantGenerator(float constantNumber)
-        {
-            ConstantNumber = constantNumber;
-        }
-
-        public float GetNumber()
+        int ConstantNumber;
+        
+        public int GetNumber()
         {
             return ConstantNumber;
+        }
+
+        public void Initialize(float mean, float coefficientOfVariation)
+        {
+            ConstantNumber = Convert.ToInt32(mean);
         }
     }
 }

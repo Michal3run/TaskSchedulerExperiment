@@ -11,11 +11,14 @@ namespace TaskSchedulerGenerator.NumberGenerators
     class TestConstantGenerator
     {
         [TestCase(5, ExpectedResult = 5)]
-        [TestCase(0.25f, ExpectedResult = 0.25f)]
+        [TestCase(0.25f, ExpectedResult = 0f)]
+        [TestCase(0.75f, ExpectedResult = 1f)]
         public float TestGenerateNumber(float inputNumber)
         {
-            return new ConstantGenerator(inputNumber).GetNumber();
+            var constantGenerator = new ConstantGenerator();
+            constantGenerator.Initialize(inputNumber, 0);
+            return constantGenerator.GetNumber();
         }
-        
+
     }
 }

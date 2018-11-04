@@ -40,6 +40,7 @@ namespace TaskSchedulerGenerator
             Builder.RegisterType<TaskQuantityCalculator>().As<ITaskQuantityCalculator>();
             Builder.RegisterType<Engine>().As<IEngine>();
             Builder.RegisterType<TaskListGenerator>().As<ITaskListGenerator>();
+            Builder.RegisterType<AverageTaskDurationCalculator>().As<IAverageTaskDurationCalculator>();
         }
 
         public void Generate()

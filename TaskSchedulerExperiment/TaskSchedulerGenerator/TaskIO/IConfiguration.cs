@@ -12,10 +12,14 @@ namespace TaskSchedulerGenerator.TaskIO
         int SimulationLength { get; }
         decimal SystemLoad { get; }
         int MeanTaskLength { get; }
+        float CoefficientOfVariationTaskLength { get; }
         int TickLength { get; }
         string OutputPath { get; }
         IMaxDelayGenerator MaxDelayGenerator { get; }
         ITaskLengthGenerator TaskLengthGenerator { get; }
         ITaskPerTickGenerator TaskPerTickGenerator { get; }
+        float CoefficientOfVariationMaxDelay { get; }
+        float MeanMaxDelay { get; }
+        float CoefficientOfVariationTaskPerTick { get; }
     }
 }

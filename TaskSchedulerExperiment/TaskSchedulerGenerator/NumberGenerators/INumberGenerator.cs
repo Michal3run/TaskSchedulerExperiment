@@ -8,6 +8,7 @@ namespace TaskSchedulerGenerator.NumberGenerators
 {
     public interface INumberGenerator
     {
-        float GetNumber();
+        void Initialize(float mean, float coefficientOfVariation);
+        int GetNumber();
     }
 }
