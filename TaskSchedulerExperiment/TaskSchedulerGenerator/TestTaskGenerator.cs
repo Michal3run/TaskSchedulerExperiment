@@ -78,7 +78,7 @@ namespace TaskSchedulerGenerator
             {
                 MaxDelayGenerator = new UniformRandomNumberGenerator(),
                 TaskLengthGenerator = new UniformRandomNumberGenerator(),
-                TaskPerTickGenerator = new UniformRandomNumberGenerator(),
+                TaskPerTickGenerator = new UniformTaskPerTickGenerator(),
                 SimulationLength = 1000000,
                 TickLength = 20,
                 SystemLoad = 0.5m,
@@ -89,13 +89,59 @@ namespace TaskSchedulerGenerator
                 MeanMaxDelay = 12,
                 CoefficientOfVariationMaxDelay = 2f / 3f,
 
-                CoefficientOfVariationTaskPerTick = 1f,
+                CoefficientOfVariationTaskPerTick = 0.5f,
             };
 
             var saver = new StatisticalValidatorSaver((float)configuration.SystemLoad, configuration.SimulationLength, averageMaxDelay);
             var generator = new TaskGenerator(saver, configuration);
 
             generator.Generate();
+        }
+
+        [Test]
+        public void TestGeneratorInManyCases()
+        {
+            var loads = Enumerable.Range(0, 5).Select(x => 0.1m + x * 0.2m);
+            var taskLengths = new Dictionary<string, int>
+            {
+                //{"short", 5 },
+                {"medium", 20 },
+                //{"long", 40 }
+            };
+            var taskDelays = new Dictionary<string, float>
+            {
+                {"short", 5f },
+                {"medium", 10f },
+                {"long", 15f }
+            };
+
+            var testCases = loads.SelectMany(x => taskLengths, (load, taskLength) => new { load, taskLength })
+                .SelectMany(x => taskDelays, (x, delay) => new { x.load, x.taskLength, delay });
+
+            foreach (var testCase in testCases)
+            {
+                var configuration = new Configuration
+                {
+                    MaxDelayGenerator = new UniformRandomNumberGenerator(),
+                    TaskLengthGenerator = new UniformRandomNumberGenerator(),
+                    TaskPerTickGenerator = new UniformTaskPerTickGenerator(),
+                    SimulationLength = 1000000,
+                    TickLength = 50,
+                    SystemLoad = testCase.load,
+
+                    MeanTaskLength = testCase.taskLength.Value,
+                    CoefficientOfVariationTaskLength = 0.2f,
+
+                    MeanMaxDelay = testCase.delay.Value,
+                    CoefficientOfVariationMaxDelay = 0.2f,
+
+                    CoefficientOfVariationTaskPerTick = 0.5f,
+                    
+                };
+                var saver = new StatisticalValidatorSaver((float)configuration.SystemLoad, configuration.SimulationLength, (int)configuration.MeanMaxDelay);
+                var generator = new TaskGenerator(saver, configuration);
+                generator.Generate();
+            }
         }
 
         private class StatisticalValidatorSaver : ISaver

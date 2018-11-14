@@ -41,15 +41,18 @@ namespace TaskSchedulerGenerator.TaskGenerators
             foreach (var tickNo in Enumerable.Range(0, ticks))
             {
                 var tasksQuantity = TaskPerTickGenerator.GetNumber();
-                var delayBetweenTasks = (float)tickLength / tasksQuantity;
-                for(var innerTime = 0f; innerTime < tickLength; innerTime+= delayBetweenTasks)
+                if (tasksQuantity > 0)
                 {
-                    yield return new TaskModel
+                    var delayBetweenTasks = (float)tickLength / tasksQuantity;
+                    for (var innerTime = 0f; innerTime < tickLength; innerTime += delayBetweenTasks)
                     {
-                        CreateTime = tickNo * tickLength + (int)Math.Floor(innerTime),
-                        Duration = TaskLengthGenerator.GetNumber(),
-                        MaxWaitingTime = MaxDelayGenerator.GetNumber()
-                    };
+                        yield return new TaskModel
+                        {
+                            CreateTime = tickNo * tickLength + (int)Math.Floor(innerTime),
+                            Duration = TaskLengthGenerator.GetNumber(),
+                            MaxWaitingTime = MaxDelayGenerator.GetNumber()
+                        };
+                    }
                 }
             }
         }

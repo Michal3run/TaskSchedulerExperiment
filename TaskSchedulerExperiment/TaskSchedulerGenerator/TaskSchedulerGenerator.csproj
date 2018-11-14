@@ -43,6 +43,9 @@
     <Reference Include="CsvHelper, Version=7.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.7.1.1\lib\net45\CsvHelper.dll</HintPath>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.7.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.3.1.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
@@ -55,6 +58,8 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -66,10 +71,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NumberGenerators\BinomialContinousN.cs" />
     <Compile Include="NumberGenerators\IAnyGenerator.cs" />
     <Compile Include="NumberGenerators\IMaxDelayGenerator.cs" />
     <Compile Include="NumberGenerators\ITaskLengthGenerator.cs" />
     <Compile Include="NumberGenerators\ITaskPerTickGenerator.cs" />
+    <Compile Include="NumberGenerators\TestUniformTaskPerTickGenerator.cs" />
+    <Compile Include="NumberGenerators\UniformTaskPerTickGenerator.cs" />
     <Compile Include="TaskGenerator.cs" />
     <Compile Include="Engines\Engine.cs" />
     <Compile Include="Engines\IEngine.cs" />
