@@ -1,38 +1,59 @@
 ﻿using System;
-using TaskSchedulerCommon;
-using TaskSchedulerCommon.Models;
-using TaskSchedulerCore.Managers;
 
 namespace TaskSchedulerExperiment
 {
     class Tester
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Getting parameters");
+            TestBase testClass;
 
-            var parameters = GetServerParameters();
-
-            Console.WriteLine($"SchedulerType: {parameters.SchedulerType.ToString()}");
-            Console.WriteLine("Creating server manager");
-
-            using (var serverManager = new ServerManager(parameters))
+            if (args.Length < 1)
             {
-                Console.WriteLine("Processing...");
-                var output = serverManager.GetProcessingOutput();
-                Console.WriteLine($"Finished! Percent of delayed tasks: {output?.PercentOfDelayedTasks} %");
-                Console.WriteLine($"Press any key to exit");
-                Console.ReadKey();
+                testClass = new AllFilesTester();
+                Console.WriteLine($"Tester class was not defined. Chosen default class: {testClass.GetType().Name}");
+            }
+            else
+            {
+                testClass = GetTestClass(args);
+            }
+
+            testClass.Test();
+
+            Console.WriteLine("Testing finished!");
+            Console.WriteLine($"Press any key to exit");
+            Console.ReadKey();
+        }
+
+        private static TestBase GetTestClass(string[] args)
+        {
+            var selectedTester = args[0];
+
+            switch (selectedTester)
+            {
+                case "one": return GetOneFileTester(args);
+                case "all": return new AllFilesTester();
+                default: throw new Exception($"Unknown tester! {selectedTester}");
             }
         }
 
-        private static ServerParameters GetServerParameters()
+        private const string DefaultFile = "0,9_40_5";
+
+        private static OneFileTester GetOneFileTester(string[] args)
         {
-            return new ServerParameters
+            string fileName;
+
+            if (args.Length < 2)
             {
-                SchedulerType = ESchedulerType.FCFS,
-                TasksFilePath = @"..\..\..\Input\output.csv"
-            };
+                Console.WriteLine($"File was not specified for one file tester. Chosen default: {DefaultFile}");
+                fileName = DefaultFile;
+            }
+            else
+            {
+                fileName = args[1];
+            }
+
+            return new OneFileTester(fileName);
         }
     }
 }
