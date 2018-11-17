@@ -45,6 +45,7 @@
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Interfaces\ITaskScheduler.cs" />
     <Compile Include="Models\GeneratorInput.cs" />
+    <Compile Include="Models\InputParamters.cs" />
     <Compile Include="Models\ProcessingOutput.cs" />
     <Compile Include="Models\SchedulerTask.cs" />
     <Compile Include="Models\ServerParameters.cs" />
