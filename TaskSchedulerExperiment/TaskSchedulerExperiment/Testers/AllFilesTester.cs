@@ -6,22 +6,26 @@ using System.Threading.Tasks;
 using TaskSchedulerCommon;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerCore.Managers;
+using TaskSchedulerExperiment.Saver;
 
 namespace TaskSchedulerExperiment
 {
     public class AllFilesTester : TestBase
     {
+        public AllFilesTester(IResultSaver saver) : base(saver)
+        { }
+
         public override void Test()
         {
             var result = GetProcessingOutputs();
-            result.ForEach(r => Console.WriteLine(r.GetOutputTextInfo()));
+            result.ForEach(r => Saver.Save(r.GetOutputTextInfo()));
 
-            Console.WriteLine($"-------");
+            Saver.Save($"-------");
 
             foreach (var typeData in result.GroupBy(x => x.InputParamters.SchedulerType))
             {
                 var avgDelay = typeData.Average(x => x.PercentOfDelayedTasks);
-                Console.WriteLine($"Type: {typeData.Key}, AVG delay: {avgDelay}");
+                Saver.Save($"Type: {typeData.Key}, AVG delay: {avgDelay}");
             }
         }
 
@@ -56,7 +60,7 @@ namespace TaskSchedulerExperiment
 
             using (var serverManager = new ServerManager(serverParameters))
             {
-                Console.WriteLine($"Processing... {parameters.OriginalFileName}, schedulerType: {parameters.SchedulerType}");
+                Saver.Save($"Processing... {parameters.OriginalFileName}, schedulerType: {parameters.SchedulerType}");
                 var output = serverManager.GetProcessingOutput();
                 output.InputParamters = parameters;
                 return output;

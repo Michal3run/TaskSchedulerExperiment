@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Saver\FileSaver.cs" />
+    <Compile Include="Saver\ConsoleSaver.cs" />
+    <Compile Include="Saver\IResultSaver.cs" />
     <Compile Include="Testers\AllFilesTester.cs" />
     <Compile Include="Testers\OneFileTester.cs" />
     <Compile Include="Testers\TestBase.cs" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskSchedulerCommon;
 using TaskSchedulerCommon.Models;
 using TaskSchedulerCore.Managers;
+using TaskSchedulerExperiment.Saver;
 
 namespace TaskSchedulerExperiment
 {
@@ -13,25 +14,25 @@ namespace TaskSchedulerExperiment
     {
         private readonly string _fileName;
 
-        public OneFileTester(string fileName)
+        public OneFileTester(IResultSaver saver, string fileName) : base(saver)
         {
             _fileName = fileName;
         }
 
         public override void Test()
         {
-            Console.WriteLine("Getting parameters");
+            Saver.Save("Getting parameters");
 
             var parameters = GetServerParameters(_fileName);
 
-            Console.WriteLine($"SchedulerType: {parameters.SchedulerType.ToString()}");
-            Console.WriteLine("Creating server manager");
+            Saver.Save($"SchedulerType: {parameters.SchedulerType.ToString()}");
+            Saver.Save("Creating server manager");
 
             using (var serverManager = new ServerManager(parameters))
             {
-                Console.WriteLine("Processing...");
+                Saver.Save("Processing...");
                 var output = serverManager.GetProcessingOutput();
-                Console.WriteLine($"Finished! Percent of delayed tasks: {output?.PercentOfDelayedTasks} %");                
+                Saver.Save($"Finished! Percent of delayed tasks: {output?.PercentOfDelayedTasks} %");                
             }
         }
         
