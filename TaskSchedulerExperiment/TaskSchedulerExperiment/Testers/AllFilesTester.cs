@@ -41,11 +41,8 @@ namespace TaskSchedulerExperiment
                 Parallel.ForEach(Enum.GetValues(typeof(ESchedulerType)).Cast<ESchedulerType>().ToList(), scheduler =>
                 {
                     var parameters = GetInputParamters(file, scheduler);
-                    if (parameters.Load > 0.8m && scheduler == ESchedulerType.DoubleQueue)
-                    {
-                        var output = GetProcessingOutput(parameters);
-                        result.Add(output);
-                    }
+                    var output = GetProcessingOutput(parameters);
+                    result.Add(output);
                 });
                 //}
             }
