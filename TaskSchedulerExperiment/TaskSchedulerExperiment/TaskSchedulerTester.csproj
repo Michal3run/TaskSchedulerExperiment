@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TaskSchedulerExperiment.AllFilesTester</StartupObject>
+    <StartupObject>TaskSchedulerExperiment.Tester</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
