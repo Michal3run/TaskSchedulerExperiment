@@ -1,4 +1,6 @@
-﻿namespace TaskSchedulerCore.Schdulers
+﻿using TaskSchedulerCommon.Models;
+
+namespace TaskSchedulerCore.Schdulers
 {
     public class FCFSScheduler : SchedulerBase
     {
@@ -22,9 +24,16 @@
 
             if (CurrentTask.IsDone)
             {
-                CurrentTask.WaitingTime = CurrentTask.WaitingTime ?? currentTime - CurrentTask.CreateTime; //simple case, without expropriation
+                CurrentTask.WaitingTime = GetTaskWaitingTime(currentTime, CurrentTask); 
                 AddCurrentTaskToDone();
             }
+        }
+
+        private float GetTaskWaitingTime(int currentTime, SchedulerTask task)
+        {
+            var timeFromCreate = currentTime + 1 - task.CreateTime;
+            var waitingTime = timeFromCreate - task.ProcessedTime; //time when task is processed is not counted as waitingTime
+            return waitingTime;
         }
     }
 }
