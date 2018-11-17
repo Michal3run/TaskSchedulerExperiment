@@ -20,7 +20,7 @@ namespace TaskSchedulerGeneratorRunner
                 {"medium", 20 },
                 {"long", 40 }
             };
-            var taskDelays = new Dictionary<string, float>
+           var taskDelays = new Dictionary<string, float>
             {
                 {"short", 5f },
                 {"medium", 10f },
@@ -49,7 +49,7 @@ namespace TaskSchedulerGeneratorRunner
 
                     CoefficientOfVariationTaskPerTick = 0.5f,
 
-                    OutputPath = $@"..\..\..\Input\output_load-{testCase.load}_task-{testCase.taskLength.Key}_delay-{testCase.delay.Key}.csv",
+                    OutputPath = $@"..\..\..\Input\{testCase.load}_{testCase.taskLength.Value}_{testCase.delay.Value}.csv",
                 };
                 var generator = new TaskGenerator(configuration);
                 generator.Generate();
