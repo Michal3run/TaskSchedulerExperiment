@@ -33,9 +33,9 @@ namespace TaskSchedulerGenerator.NumberGenerators
         {
             var numbers = GenerateNumbers(mean, coefficientOfVariation);
             var dnumbers = numbers.Select(x => (double)x).ToList();
-            var variance = Statistics.Variance(dnumbers);
+            var standardDeviation = Statistics.StandardDeviation(dnumbers);
             var calculatedMean = Statistics.Mean(dnumbers);
-            (variance / calculatedMean).ShouldBe(coefficientOfVariation, 0.05f);
+            (standardDeviation / calculatedMean).ShouldBe(coefficientOfVariation, 0.05f);
             
         }
 

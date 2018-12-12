@@ -76,6 +76,8 @@
     <Compile Include="NumberGenerators\IMaxDelayGenerator.cs" />
     <Compile Include="NumberGenerators\ITaskLengthGenerator.cs" />
     <Compile Include="NumberGenerators\ITaskPerTickGenerator.cs" />
+    <Compile Include="NumberGenerators\ParetoTaskPerTickGenerator.cs" />
+    <Compile Include="NumberGenerators\TestParetoTaskPerTickGenerator.cs" />
     <Compile Include="NumberGenerators\TestUniformTaskPerTickGenerator.cs" />
     <Compile Include="NumberGenerators\UniformTaskPerTickGenerator.cs" />
     <Compile Include="TaskGenerator.cs" />

@@ -26,17 +26,19 @@ namespace TaskSchedulerGeneratorRunner
                 {"medium", 10f },
                 {"long", 15f }
             };
+            var coefficientsOfVariations = new[] { 1, 10, 50, 1000 };
 
             var testCases = loads.SelectMany(x => taskLengths, (load, taskLength) => new { load, taskLength })
-                .SelectMany(x => taskDelays, (x, delay) => new { x.load, x.taskLength, delay });
+                .SelectMany(x => taskDelays, (x, delay) => new { x.load, x.taskLength, delay })
+                .SelectMany(x => coefficientsOfVariations, (x, cov) => new { x.load, x.taskLength, x.delay, cov });
 
-            foreach(var testCase in testCases)
+            foreach (var testCase in testCases)
             {
                 var configuration = new Configuration
                 {
                     MaxDelayGenerator = new UniformRandomNumberGenerator(),
                     TaskLengthGenerator = new UniformRandomNumberGenerator(),
-                    TaskPerTickGenerator = new UniformTaskPerTickGenerator(),
+                    TaskPerTickGenerator = new ParetoTaskPerTickGenerator(),
                     SimulationLength = 1000000,
                     TickLength = 50,
                     SystemLoad = testCase.load,
@@ -47,9 +49,9 @@ namespace TaskSchedulerGeneratorRunner
                     MeanMaxDelay = testCase.delay.Value,
                     CoefficientOfVariationMaxDelay = 0.2f,
 
-                    CoefficientOfVariationTaskPerTick = 0.5f,
+                    CoefficientOfVariationTaskPerTick = testCase.cov,
 
-                    OutputPath = $@"..\..\..\Input\{testCase.load}_{testCase.taskLength.Value}_{testCase.delay.Value}.csv",
+                    OutputPath = $@"..\..\..\Input\{testCase.load}_{testCase.taskLength.Value}_{testCase.delay.Value}_{testCase.cov}.csv",
                 };
                 var generator = new TaskGenerator(configuration);
                 generator.Generate();
