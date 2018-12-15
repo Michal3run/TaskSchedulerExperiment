@@ -1,0 +1,274 @@
+Processing... 0,1_20_10.csv, schedulerType: DoubleQueue
+Processing... 0,1_20_10.csv, schedulerType: RoundRobin
+Processing... 0,1_20_10.csv, schedulerType: FCFS
+Processing... 0,1_20_15.csv, schedulerType: DoubleQueue
+Processing... 0,1_20_15.csv, schedulerType: FCFS
+Processing... 0,1_20_15.csv, schedulerType: RoundRobin
+Processing... 0,1_20_5.csv, schedulerType: RoundRobin
+Processing... 0,1_20_5.csv, schedulerType: DoubleQueue
+Processing... 0,1_20_5.csv, schedulerType: FCFS
+Processing... 0,1_40_10.csv, schedulerType: FCFS
+Processing... 0,1_40_10.csv, schedulerType: DoubleQueue
+Processing... 0,1_40_10.csv, schedulerType: RoundRobin
+Processing... 0,1_40_15.csv, schedulerType: FCFS
+Processing... 0,1_40_15.csv, schedulerType: RoundRobin
+Processing... 0,1_40_15.csv, schedulerType: DoubleQueue
+Processing... 0,1_40_5.csv, schedulerType: DoubleQueue
+Processing... 0,1_40_5.csv, schedulerType: RoundRobin
+Processing... 0,1_40_5.csv, schedulerType: FCFS
+Processing... 0,1_5_10.csv, schedulerType: DoubleQueue
+Processing... 0,1_5_10.csv, schedulerType: FCFS
+Processing... 0,1_5_10.csv, schedulerType: RoundRobin
+Processing... 0,1_5_15.csv, schedulerType: DoubleQueue
+Processing... 0,1_5_15.csv, schedulerType: RoundRobin
+Processing... 0,1_5_15.csv, schedulerType: FCFS
+Processing... 0,1_5_5.csv, schedulerType: RoundRobin
+Processing... 0,1_5_5.csv, schedulerType: FCFS
+Processing... 0,1_5_5.csv, schedulerType: DoubleQueue
+Processing... 0,3_20_10.csv, schedulerType: DoubleQueue
+Processing... 0,3_20_10.csv, schedulerType: RoundRobin
+Processing... 0,3_20_10.csv, schedulerType: FCFS
+Processing... 0,3_20_15.csv, schedulerType: FCFS
+Processing... 0,3_20_15.csv, schedulerType: DoubleQueue
+Processing... 0,3_20_15.csv, schedulerType: RoundRobin
+Processing... 0,3_20_5.csv, schedulerType: FCFS
+Processing... 0,3_20_5.csv, schedulerType: DoubleQueue
+Processing... 0,3_20_5.csv, schedulerType: RoundRobin
+Processing... 0,3_40_10.csv, schedulerType: FCFS
+Processing... 0,3_40_10.csv, schedulerType: DoubleQueue
+Processing... 0,3_40_10.csv, schedulerType: RoundRobin
+Processing... 0,3_40_15.csv, schedulerType: RoundRobin
+Processing... 0,3_40_15.csv, schedulerType: FCFS
+Processing... 0,3_40_15.csv, schedulerType: DoubleQueue
+Processing... 0,3_40_5.csv, schedulerType: FCFS
+Processing... 0,3_40_5.csv, schedulerType: DoubleQueue
+Processing... 0,3_40_5.csv, schedulerType: RoundRobin
+Processing... 0,3_5_10.csv, schedulerType: FCFS
+Processing... 0,3_5_10.csv, schedulerType: RoundRobin
+Processing... 0,3_5_10.csv, schedulerType: DoubleQueue
+Processing... 0,3_5_15.csv, schedulerType: FCFS
+Processing... 0,3_5_15.csv, schedulerType: RoundRobin
+Processing... 0,3_5_15.csv, schedulerType: DoubleQueue
+Processing... 0,3_5_5.csv, schedulerType: RoundRobin
+Processing... 0,3_5_5.csv, schedulerType: FCFS
+Processing... 0,3_5_5.csv, schedulerType: DoubleQueue
+Processing... 0,5_20_10.csv, schedulerType: DoubleQueue
+Processing... 0,5_20_10.csv, schedulerType: RoundRobin
+Processing... 0,5_20_10.csv, schedulerType: FCFS
+Processing... 0,5_20_15.csv, schedulerType: RoundRobin
+Processing... 0,5_20_15.csv, schedulerType: FCFS
+Processing... 0,5_20_15.csv, schedulerType: DoubleQueue
+Processing... 0,5_20_5.csv, schedulerType: FCFS
+Processing... 0,5_20_5.csv, schedulerType: RoundRobin
+Processing... 0,5_20_5.csv, schedulerType: DoubleQueue
+Processing... 0,5_40_10.csv, schedulerType: FCFS
+Processing... 0,5_40_10.csv, schedulerType: RoundRobin
+Processing... 0,5_40_10.csv, schedulerType: DoubleQueue
+Processing... 0,5_40_15.csv, schedulerType: RoundRobin
+Processing... 0,5_40_15.csv, schedulerType: DoubleQueue
+Processing... 0,5_40_15.csv, schedulerType: FCFS
+Processing... 0,5_40_5.csv, schedulerType: FCFS
+Processing... 0,5_40_5.csv, schedulerType: RoundRobin
+Processing... 0,5_40_5.csv, schedulerType: DoubleQueue
+Processing... 0,5_5_10.csv, schedulerType: FCFS
+Processing... 0,5_5_10.csv, schedulerType: DoubleQueue
+Processing... 0,5_5_10.csv, schedulerType: RoundRobin
+Processing... 0,5_5_15.csv, schedulerType: FCFS
+Processing... 0,5_5_15.csv, schedulerType: DoubleQueue
+Processing... 0,5_5_15.csv, schedulerType: RoundRobin
+Processing... 0,5_5_5.csv, schedulerType: FCFS
+Processing... 0,5_5_5.csv, schedulerType: RoundRobin
+Processing... 0,5_5_5.csv, schedulerType: DoubleQueue
+Processing... 0,7_20_10.csv, schedulerType: FCFS
+Processing... 0,7_20_10.csv, schedulerType: RoundRobin
+Processing... 0,7_20_10.csv, schedulerType: DoubleQueue
+Processing... 0,7_20_15.csv, schedulerType: RoundRobin
+Processing... 0,7_20_15.csv, schedulerType: FCFS
+Processing... 0,7_20_15.csv, schedulerType: DoubleQueue
+Processing... 0,7_20_5.csv, schedulerType: FCFS
+Processing... 0,7_20_5.csv, schedulerType: DoubleQueue
+Processing... 0,7_20_5.csv, schedulerType: RoundRobin
+Processing... 0,7_40_10.csv, schedulerType: RoundRobin
+Processing... 0,7_40_10.csv, schedulerType: FCFS
+Processing... 0,7_40_10.csv, schedulerType: DoubleQueue
+Processing... 0,7_40_15.csv, schedulerType: FCFS
+Processing... 0,7_40_15.csv, schedulerType: DoubleQueue
+Processing... 0,7_40_15.csv, schedulerType: RoundRobin
+Processing... 0,7_40_5.csv, schedulerType: DoubleQueue
+Processing... 0,7_40_5.csv, schedulerType: FCFS
+Processing... 0,7_40_5.csv, schedulerType: RoundRobin
+Processing... 0,7_5_10.csv, schedulerType: DoubleQueue
+Processing... 0,7_5_10.csv, schedulerType: FCFS
+Processing... 0,7_5_10.csv, schedulerType: RoundRobin
+Processing... 0,7_5_15.csv, schedulerType: FCFS
+Processing... 0,7_5_15.csv, schedulerType: RoundRobin
+Processing... 0,7_5_15.csv, schedulerType: DoubleQueue
+Processing... 0,7_5_5.csv, schedulerType: DoubleQueue
+Processing... 0,7_5_5.csv, schedulerType: FCFS
+Processing... 0,7_5_5.csv, schedulerType: RoundRobin
+Processing... 0,9_20_10.csv, schedulerType: DoubleQueue
+Processing... 0,9_20_10.csv, schedulerType: FCFS
+Processing... 0,9_20_10.csv, schedulerType: RoundRobin
+Processing... 0,9_20_15.csv, schedulerType: DoubleQueue
+Processing... 0,9_20_15.csv, schedulerType: FCFS
+Processing... 0,9_20_15.csv, schedulerType: RoundRobin
+Processing... 0,9_20_5.csv, schedulerType: DoubleQueue
+Processing... 0,9_20_5.csv, schedulerType: RoundRobin
+Processing... 0,9_20_5.csv, schedulerType: FCFS
+Processing... 0,9_40_10.csv, schedulerType: FCFS
+Processing... 0,9_40_10.csv, schedulerType: RoundRobin
+Processing... 0,9_40_10.csv, schedulerType: DoubleQueue
+Processing... 0,9_40_15.csv, schedulerType: FCFS
+Processing... 0,9_40_15.csv, schedulerType: DoubleQueue
+Processing... 0,9_40_15.csv, schedulerType: RoundRobin
+Processing... 0,9_40_5.csv, schedulerType: FCFS
+Processing... 0,9_40_5.csv, schedulerType: DoubleQueue
+Processing... 0,9_40_5.csv, schedulerType: RoundRobin
+Processing... 0,9_5_10.csv, schedulerType: DoubleQueue
+Processing... 0,9_5_10.csv, schedulerType: FCFS
+Processing... 0,9_5_10.csv, schedulerType: RoundRobin
+Processing... 0,9_5_15.csv, schedulerType: FCFS
+Processing... 0,9_5_15.csv, schedulerType: DoubleQueue
+Processing... 0,9_5_15.csv, schedulerType: RoundRobin
+Processing... 0,9_5_5.csv, schedulerType: FCFS
+Processing... 0,9_5_5.csv, schedulerType: RoundRobin
+Processing... 0,9_5_5.csv, schedulerType: DoubleQueue
+0,9 ; 40 ; 5 ; RoundRobin ; 90,95272 ; 0,9_40_5.csv
+0,9 ; 40 ; 10 ; RoundRobin ; 88,28637 ; 0,9_40_10.csv
+0,9 ; 40 ; 15 ; RoundRobin ; 85,27284 ; 0,9_40_15.csv
+0,9 ; 40 ; 5 ; FCFS ; 84,07080 ; 0,9_40_5.csv
+0,9 ; 20 ; 5 ; RoundRobin ; 82,21777 ; 0,9_20_5.csv
+0,9 ; 40 ; 10 ; FCFS ; 80,05848 ; 0,9_40_10.csv
+0,9 ; 20 ; 10 ; RoundRobin ; 78,14771 ; 0,9_20_10.csv
+0,9 ; 40 ; 15 ; FCFS ; 76,18452 ; 0,9_40_15.csv
+0,9 ; 20 ; 15 ; RoundRobin ; 75,02661 ; 0,9_20_15.csv
+0,9 ; 20 ; 5 ; FCFS ; 74,81129 ; 0,9_20_5.csv
+0,9 ; 20 ; 10 ; FCFS ; 67,51422 ; 0,9_20_10.csv
+0,7 ; 40 ; 5 ; RoundRobin ; 64,62917 ; 0,7_40_5.csv
+0,9 ; 5 ; 5 ; RoundRobin ; 62,66024 ; 0,9_5_5.csv
+0,9 ; 20 ; 15 ; FCFS ; 61,36842 ; 0,9_20_15.csv
+0,7 ; 40 ; 10 ; RoundRobin ; 61,00069 ; 0,7_40_10.csv
+0,7 ; 40 ; 15 ; RoundRobin ; 54,23612 ; 0,7_40_15.csv
+0,9 ; 5 ; 10 ; RoundRobin ; 53,77072 ; 0,9_5_10.csv
+0,7 ; 40 ; 5 ; FCFS ; 51,26737 ; 0,7_40_5.csv
+0,7 ; 40 ; 10 ; FCFS ; 46,02730 ; 0,7_40_10.csv
+0,7 ; 20 ; 5 ; RoundRobin ; 45,93361 ; 0,7_20_5.csv
+0,9 ; 5 ; 5 ; FCFS ; 45,29363 ; 0,9_5_5.csv
+0,9 ; 5 ; 15 ; RoundRobin ; 44,84917 ; 0,9_5_15.csv
+0,7 ; 40 ; 15 ; FCFS ; 39,94042 ; 0,7_40_15.csv
+0,7 ; 20 ; 10 ; RoundRobin ; 36,89833 ; 0,7_20_10.csv
+0,7 ; 20 ; 5 ; FCFS ; 35,62894 ; 0,7_20_5.csv
+0,9 ; 5 ; 10 ; FCFS ; 32,39533 ; 0,9_5_10.csv
+0,7 ; 20 ; 15 ; RoundRobin ; 30,44498 ; 0,7_20_15.csv
+0,9 ; 40 ; 5 ; DoubleQueue ; 30,44378 ; 0,9_40_5.csv
+0,5 ; 40 ; 5 ; RoundRobin ; 28,89901 ; 0,5_40_5.csv
+0,9 ; 40 ; 10 ; DoubleQueue ; 27,98157 ; 0,9_40_10.csv
+0,5 ; 40 ; 10 ; RoundRobin ; 26,36752 ; 0,5_40_10.csv
+0,9 ; 40 ; 15 ; DoubleQueue ; 25,11834 ; 0,9_40_15.csv
+0,7 ; 20 ; 10 ; FCFS ; 23,00181 ; 0,7_20_10.csv
+0,9 ; 20 ; 5 ; DoubleQueue ; 22,34914 ; 0,9_20_5.csv
+0,9 ; 5 ; 15 ; FCFS ; 22,27975 ; 0,9_5_15.csv
+0,7 ; 40 ; 5 ; DoubleQueue ; 21,31557 ; 0,7_40_5.csv
+0,5 ; 40 ; 15 ; RoundRobin ; 19,97612 ; 0,5_40_15.csv
+0,5 ; 40 ; 5 ; FCFS ; 19,96422 ; 0,5_40_5.csv
+0,7 ; 40 ; 10 ; DoubleQueue ; 19,36940 ; 0,7_40_10.csv
+0,5 ; 40 ; 10 ; FCFS ; 17,27361 ; 0,5_40_10.csv
+0,7 ; 40 ; 15 ; DoubleQueue ; 16,91682 ; 0,7_40_15.csv
+0,9 ; 20 ; 10 ; DoubleQueue ; 15,85615 ; 0,9_20_10.csv
+0,7 ; 20 ; 15 ; FCFS ; 15,57921 ; 0,7_20_15.csv
+0,5 ; 20 ; 5 ; RoundRobin ; 14,18954 ; 0,5_20_5.csv
+0,7 ; 20 ; 5 ; DoubleQueue ; 13,08923 ; 0,7_20_5.csv
+0,9 ; 20 ; 15 ; DoubleQueue ; 12,60864 ; 0,9_20_15.csv
+0,5 ; 40 ; 15 ; FCFS ; 12,56765 ; 0,5_40_15.csv
+0,7 ; 5 ; 5 ; RoundRobin ; 11,92850 ; 0,7_5_5.csv
+0,5 ; 40 ; 5 ; DoubleQueue ; 9,92112 ; 0,5_40_5.csv
+0,5 ; 20 ; 10 ; RoundRobin ; 9,66469 ; 0,5_20_10.csv
+0,5 ; 20 ; 5 ; FCFS ; 9,44538 ; 0,5_20_5.csv
+0,5 ; 40 ; 10 ; DoubleQueue ; 8,62875 ; 0,5_40_10.csv
+0,7 ; 20 ; 10 ; DoubleQueue ; 7,96979 ; 0,7_20_10.csv
+0,5 ; 40 ; 15 ; DoubleQueue ; 6,98822 ; 0,5_40_15.csv
+0,5 ; 20 ; 15 ; RoundRobin ; 5,58194 ; 0,5_20_15.csv
+0,9 ; 5 ; 5 ; DoubleQueue ; 5,37393 ; 0,9_5_5.csv
+0,7 ; 20 ; 15 ; DoubleQueue ; 4,92788 ; 0,7_20_15.csv
+0,5 ; 20 ; 5 ; DoubleQueue ; 4,29190 ; 0,5_20_5.csv
+0,7 ; 5 ; 10 ; RoundRobin ; 4,10595 ; 0,7_5_10.csv
+0,5 ; 20 ; 10 ; FCFS ; 3,82819 ; 0,5_20_10.csv
+0,7 ; 5 ; 5 ; FCFS ; 3,80815 ; 0,7_5_5.csv
+0,9 ; 5 ; 10 ; DoubleQueue ; 3,68489 ; 0,9_5_10.csv
+0,9 ; 5 ; 15 ; DoubleQueue ; 2,55867 ; 0,9_5_15.csv
+0,5 ; 20 ; 10 ; DoubleQueue ; 2,25022 ; 0,5_20_10.csv
+0,7 ; 5 ; 15 ; RoundRobin ; 1,78583 ; 0,7_5_15.csv
+0,5 ; 5 ; 5 ; RoundRobin ; 1,17559 ; 0,5_5_5.csv
+0,5 ; 20 ; 15 ; FCFS ; 1,09872 ; 0,5_20_15.csv
+0,7 ; 5 ; 5 ; DoubleQueue ; 1,04726 ; 0,7_5_5.csv
+0,5 ; 20 ; 15 ; DoubleQueue ; 0,77675 ; 0,5_20_15.csv
+0,7 ; 5 ; 10 ; FCFS ; 0,65958 ; 0,7_5_10.csv
+0,5 ; 5 ; 5 ; FCFS ; 0,45665 ; 0,5_5_5.csv
+0,5 ; 5 ; 5 ; DoubleQueue ; 0,45282 ; 0,5_5_5.csv
+0,7 ; 5 ; 10 ; DoubleQueue ; 0,18686 ; 0,7_5_10.csv
+0,7 ; 5 ; 15 ; FCFS ; 0,15556 ; 0,7_5_15.csv
+0,3 ; 5 ; 5 ; FCFS ; 0,05647 ; 0,3_5_5.csv
+0,3 ; 5 ; 5 ; DoubleQueue ; 0,05647 ; 0,3_5_5.csv
+0,7 ; 5 ; 15 ; DoubleQueue ; 0,05023 ; 0,7_5_15.csv
+0,5 ; 5 ; 10 ; RoundRobin ; 0,04207 ; 0,5_5_10.csv
+0,3 ; 5 ; 5 ; RoundRobin ; 0,00166 ; 0,3_5_5.csv
+0,1 ; 20 ; 10 ; FCFS ; 0 ; 0,1_20_10.csv
+0,1 ; 20 ; 10 ; RoundRobin ; 0 ; 0,1_20_10.csv
+0,1 ; 20 ; 10 ; DoubleQueue ; 0 ; 0,1_20_10.csv
+0,1 ; 20 ; 15 ; FCFS ; 0 ; 0,1_20_15.csv
+0,1 ; 20 ; 15 ; RoundRobin ; 0 ; 0,1_20_15.csv
+0,1 ; 20 ; 15 ; DoubleQueue ; 0 ; 0,1_20_15.csv
+0,1 ; 20 ; 5 ; RoundRobin ; 0 ; 0,1_20_5.csv
+0,1 ; 20 ; 5 ; FCFS ; 0 ; 0,1_20_5.csv
+0,1 ; 20 ; 5 ; DoubleQueue ; 0 ; 0,1_20_5.csv
+0,1 ; 40 ; 10 ; FCFS ; 0 ; 0,1_40_10.csv
+0,1 ; 40 ; 10 ; RoundRobin ; 0 ; 0,1_40_10.csv
+0,1 ; 40 ; 10 ; DoubleQueue ; 0 ; 0,1_40_10.csv
+0,1 ; 40 ; 15 ; FCFS ; 0 ; 0,1_40_15.csv
+0,1 ; 40 ; 15 ; DoubleQueue ; 0 ; 0,1_40_15.csv
+0,1 ; 40 ; 15 ; RoundRobin ; 0 ; 0,1_40_15.csv
+0,1 ; 40 ; 5 ; FCFS ; 0 ; 0,1_40_5.csv
+0,1 ; 40 ; 5 ; RoundRobin ; 0 ; 0,1_40_5.csv
+0,1 ; 40 ; 5 ; DoubleQueue ; 0 ; 0,1_40_5.csv
+0,1 ; 5 ; 10 ; FCFS ; 0 ; 0,1_5_10.csv
+0,1 ; 5 ; 10 ; RoundRobin ; 0 ; 0,1_5_10.csv
+0,1 ; 5 ; 10 ; DoubleQueue ; 0 ; 0,1_5_10.csv
+0,1 ; 5 ; 15 ; RoundRobin ; 0 ; 0,1_5_15.csv
+0,1 ; 5 ; 15 ; FCFS ; 0 ; 0,1_5_15.csv
+0,1 ; 5 ; 15 ; DoubleQueue ; 0 ; 0,1_5_15.csv
+0,1 ; 5 ; 5 ; FCFS ; 0 ; 0,1_5_5.csv
+0,1 ; 5 ; 5 ; RoundRobin ; 0 ; 0,1_5_5.csv
+0,1 ; 5 ; 5 ; DoubleQueue ; 0 ; 0,1_5_5.csv
+0,3 ; 20 ; 10 ; FCFS ; 0 ; 0,3_20_10.csv
+0,3 ; 20 ; 10 ; DoubleQueue ; 0 ; 0,3_20_10.csv
+0,3 ; 20 ; 10 ; RoundRobin ; 0 ; 0,3_20_10.csv
+0,3 ; 20 ; 15 ; FCFS ; 0 ; 0,3_20_15.csv
+0,3 ; 20 ; 15 ; DoubleQueue ; 0 ; 0,3_20_15.csv
+0,3 ; 20 ; 15 ; RoundRobin ; 0 ; 0,3_20_15.csv
+0,3 ; 20 ; 5 ; FCFS ; 0 ; 0,3_20_5.csv
+0,3 ; 20 ; 5 ; DoubleQueue ; 0 ; 0,3_20_5.csv
+0,3 ; 20 ; 5 ; RoundRobin ; 0 ; 0,3_20_5.csv
+0,3 ; 40 ; 10 ; FCFS ; 0 ; 0,3_40_10.csv
+0,3 ; 40 ; 10 ; RoundRobin ; 0 ; 0,3_40_10.csv
+0,3 ; 40 ; 10 ; DoubleQueue ; 0 ; 0,3_40_10.csv
+0,3 ; 40 ; 15 ; FCFS ; 0 ; 0,3_40_15.csv
+0,3 ; 40 ; 15 ; DoubleQueue ; 0 ; 0,3_40_15.csv
+0,3 ; 40 ; 15 ; RoundRobin ; 0 ; 0,3_40_15.csv
+0,3 ; 40 ; 5 ; FCFS ; 0 ; 0,3_40_5.csv
+0,3 ; 40 ; 5 ; RoundRobin ; 0 ; 0,3_40_5.csv
+0,3 ; 40 ; 5 ; DoubleQueue ; 0 ; 0,3_40_5.csv
+0,3 ; 5 ; 10 ; FCFS ; 0 ; 0,3_5_10.csv
+0,3 ; 5 ; 10 ; RoundRobin ; 0 ; 0,3_5_10.csv
+0,3 ; 5 ; 10 ; DoubleQueue ; 0 ; 0,3_5_10.csv
+0,3 ; 5 ; 15 ; FCFS ; 0 ; 0,3_5_15.csv
+0,3 ; 5 ; 15 ; RoundRobin ; 0 ; 0,3_5_15.csv
+0,3 ; 5 ; 15 ; DoubleQueue ; 0 ; 0,3_5_15.csv
+0,5 ; 5 ; 10 ; FCFS ; 0 ; 0,5_5_10.csv
+0,5 ; 5 ; 10 ; DoubleQueue ; 0 ; 0,5_5_10.csv
+0,5 ; 5 ; 15 ; FCFS ; 0 ; 0,5_5_15.csv
+0,5 ; 5 ; 15 ; DoubleQueue ; 0 ; 0,5_5_15.csv
+0,5 ; 5 ; 15 ; RoundRobin ; 0 ; 0,5_5_15.csv
+-------
+Type: RoundRobin, AVG delay: 23,956566
+Type: FCFS, AVG delay: 18,327459333333333333333333333
+Type: DoubleQueue, AVG delay: 5,8714311111111111111111111111
