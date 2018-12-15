@@ -40,7 +40,7 @@ namespace TaskSchedulerExperiment
         {
             return new ServerParameters
             {
-                SchedulerType = ESchedulerType.DoubleQueue,
+                SchedulerType = ESchedulerType.FCFS,
                 TasksFilePath = $@"..\..\..\Input\{fileName}.csv"
             };
         }

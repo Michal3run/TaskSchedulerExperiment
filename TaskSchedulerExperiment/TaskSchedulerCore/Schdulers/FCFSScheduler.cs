@@ -1,4 +1,5 @@
-﻿using TaskSchedulerCommon.Models;
+﻿using System;
+using TaskSchedulerCommon.Models;
 
 namespace TaskSchedulerCore.Schdulers
 {
@@ -24,7 +25,7 @@ namespace TaskSchedulerCore.Schdulers
 
             if (CurrentTask.IsDone)
             {
-                CurrentTask.WaitingTime = GetTaskWaitingTime(currentTime, CurrentTask); 
+                CurrentTask.WaitingTime = GetTaskWaitingTime(currentTime, CurrentTask);
                 AddCurrentTaskToDone();
             }
         }

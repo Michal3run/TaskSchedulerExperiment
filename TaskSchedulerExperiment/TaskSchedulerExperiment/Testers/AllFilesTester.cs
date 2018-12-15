@@ -73,7 +73,8 @@ namespace TaskSchedulerExperiment
                 SchedulerType = schedulerType,
                 Load = Convert.ToDecimal(splitted[0]),
                 TaskLength = Convert.ToInt32(splitted[1]),
-                Delay = Convert.ToInt32(splitted[2])
+                Delay = Convert.ToInt32(splitted[2]),
+                Cov = Convert.ToInt32(splitted[3]),
             };
         }
 

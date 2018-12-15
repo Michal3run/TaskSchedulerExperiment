@@ -12,6 +12,7 @@
                 InputParamters.Load,
                 InputParamters.TaskLength,
                 InputParamters.Delay,
+                InputParamters.Cov,
                 InputParamters.SchedulerType.ToString(),
                 PercentOfDelayedTasks,
                 InputParamters.OriginalFileName);

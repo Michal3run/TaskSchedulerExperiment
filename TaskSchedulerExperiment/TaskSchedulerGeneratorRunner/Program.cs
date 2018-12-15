@@ -13,24 +13,21 @@ namespace TaskSchedulerGeneratorRunner
     {
         static void Main(string[] args)
         {
-            var loads = Enumerable.Range(0, 5).Select(x => 0.1m + x * 0.2m);
+            var loads = Enumerable.Range(0, 3).Select(x => 0.5m + x * 0.2m);
             var taskLengths = new Dictionary<string, int>
             {
-                {"short", 5 },
-                {"medium", 20 },
-                {"long", 40 }
+                {"medium", 10 }
             };
            var taskDelays = new Dictionary<string, float>
             {
-                {"short", 5f },
-                {"medium", 10f },
-                {"long", 15f }
+                {"medium", 8f }
             };
             var coefficientsOfVariations = new[] { 1, 10, 50, 1000 };
 
             var testCases = loads.SelectMany(x => taskLengths, (load, taskLength) => new { load, taskLength })
                 .SelectMany(x => taskDelays, (x, delay) => new { x.load, x.taskLength, delay })
-                .SelectMany(x => coefficientsOfVariations, (x, cov) => new { x.load, x.taskLength, x.delay, cov });
+                .SelectMany(x => coefficientsOfVariations, (x, cov) => new { x.load, x.taskLength, x.delay, cov })
+                .ToList();
 
             foreach (var testCase in testCases)
             {
