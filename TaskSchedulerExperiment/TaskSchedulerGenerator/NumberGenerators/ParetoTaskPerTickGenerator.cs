@@ -23,10 +23,12 @@ namespace TaskSchedulerGenerator.NumberGenerators
 
         public void Initialize(float mean, float coefficientOfVariation)
         {
+            if (coefficientOfVariation >= 16 || coefficientOfVariation<=0 ) throw new ArgumentOutOfRangeException("coefficientOfVariation", "CoefficientOfVariation should be from range (0,16)");
             double m = mean;
             double sd = mean * coefficientOfVariation;
             double v = sd * sd;
-            double a = 1 + Math.Sqrt(1 + m*m/v);
+            //double a = 1 + Math.Sqrt(1 + m*m/v);
+            double a = 1/ coefficientOfVariation * 16;
             double xm = m * (a - 1) / a;
             Distribution = new Pareto(xm, a);
             Sum = 0;

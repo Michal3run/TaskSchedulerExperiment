@@ -12,19 +12,10 @@ namespace TaskSchedulerGenerator.NumberGenerators
     [TestFixture]
     class TestParetoTaskPerTickGenerator
     {
-        [TestCase(5f, 1f)]
-        [TestCase(5f, 10f)]
-        [TestCase(5f, 50f)]
-        [TestCase(1f, 1f)]
-        [TestCase(1f, 10f)]
-        [TestCase(1f, 50f)]
-        [TestCase(1f, 100f)]
-        [TestCase(1f, 200f)]
-        [TestCase(0.1f, 1f)]
-        [TestCase(0.1f, 10f)]
-        [TestCase(0.1f, 50f)]
-        [TestCase(0.1f, 100f)]
-        [TestCase(0.1f, 200f)]
+        [TestCase(10f, 0.5f)]
+        [TestCase(10f, 3f)]
+        [TestCase(10f, 7f)]
+        [TestCase(10f, 15f)]
         public void TestParetoForRegularParameters(float mean, float RSD)
         {
             float cov = RSD;
@@ -34,6 +25,7 @@ namespace TaskSchedulerGenerator.NumberGenerators
             var list = Enumerable.Range(1, 1000000).Select(x => (double)distribution.GetNumber()).ToList();
             var calculatedMean = Statistics.Mean(list);
             calculatedMean.ShouldBe(mean, 0.05 * mean);
+            (Statistics.StandardDeviation(list) / calculatedMean).ShouldBe(RSD, 0.5* RSD);
         }
     }
 }

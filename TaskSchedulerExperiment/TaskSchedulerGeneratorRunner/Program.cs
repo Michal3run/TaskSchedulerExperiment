@@ -22,7 +22,7 @@ namespace TaskSchedulerGeneratorRunner
             {
                 {"medium", 8f }
             };
-            var coefficientsOfVariations = new[] { 1, 10, 50, 1000 };
+            var coefficientsOfVariations = new[] { 0.5f, 3, 7, 15 };
 
             var testCases = loads.SelectMany(x => taskLengths, (load, taskLength) => new { load, taskLength })
                 .SelectMany(x => taskDelays, (x, delay) => new { x.load, x.taskLength, delay })
